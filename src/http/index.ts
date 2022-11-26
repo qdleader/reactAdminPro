@@ -1,5 +1,6 @@
 import axios, { AxiosInstance, AxiosError, AxiosRequestConfig, AxiosResponse } from "axios"
 import { message } from "antd"
+import { showFullScreenLoading } from "../components/BasicLoading"
 
 const config = {
 	// 默认地址请求地址，可在 .env 开头文件中修改
@@ -61,6 +62,7 @@ class RequestHttp {
 		this.service = axios.create(config)
 		this.service.interceptors.request.use(
 			(config: AxiosRequestConfig) => {
+				showFullScreenLoading()
 				//todo const token ="eyJhbGciOiJIUzI1NiJ9.eyJvZmZpY2Vf";
 				return { ...config, headers: { ...config.headers } }
 			},
