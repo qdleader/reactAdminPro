@@ -1,0 +1,28 @@
+{
+	"name": "react-admin",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite --mode dev",
+		"build": "tsc && vite build",
+		"build:prod": "tsc && vite build --mode prod",
+		"build:test": "tsc && vite build --mode test",
+		"build:dev": "tsc && vite build --mode dev",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"react": "^18.2.0",
+		"react-dom": "^18.2.0"
+	},
+	"devDependencies": {
+		"@types/react": "^18.0.24",
+		"@types/react-dom": "^18.0.8",
+		"@vitejs/plugin-react": "^2.2.0",
+		"antd": "^5.0.0",
+		"axios": "^1.2.0",
+		"react-router-dom": "^6.4.3",
+		"typescript": "^4.6.4",
+		"vite": "^3.2.3"
+	}
+}
