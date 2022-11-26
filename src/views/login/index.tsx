@@ -4,7 +4,7 @@ import { loginApi } from '../../http/modules/login'
 export default function Login() {
     const doLogin = async () => {
         let { data } = await loginApi({
-            username: 'qd',
+            username: 'qdleader',
             password: '123456'
         })
     }
