@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react'
-import { loginApi } from '../../http/modules/login'
-
+import LoginForm from './components/loginForm'
+import './index.less'
 export default function Login() {
-    const doLogin = async () => {
-        let { data } = await loginApi({
-            username: 'qdleader',
-            password: '123456'
-        })
-    }
     return (
-        <div>
-            <div onClick={doLogin}>发起请求post</div>
-            <div>发起请求get</div>
+        <div className="login-container">
+            <div className="login-box">
+                <div className="login-form">
+                    <div className="login-logo">
+                        <span className="logo-text">后台-Admin</span>
+                    </div>
+                    <LoginForm />
+                </div>
+            </div>
         </div>
 
     )
