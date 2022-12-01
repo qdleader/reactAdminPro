@@ -1,7 +1,5 @@
-import { Spin } from "antd";
 import "./index.less";
-
-const Loading = ({ tip = "Loading" }: { tip?: string }) => {
+const Loading = () => {
     return <svg className="svgLoading" viewBox="0 0 120 120" version="1.1" >
         <g id="circle" className="g-circles g-circles--v1">
             <circle id="12" transform="translate(35, 16.698730) rotate(-30) translate(-35, -16.698730) " cx="35" cy="16.6987298" r="10"></circle>
@@ -17,10 +15,8 @@ const Loading = ({ tip = "Loading" }: { tip?: string }) => {
             <circle id="2" transform="translate(85, 16.698730) rotate(-150) translate(-85, -16.698730) " cx="85" cy="16.6987298" r="10"></circle>
             <circle id="1" cx="60" cy="10" r="10"></circle>
         </g>
-
         <use href="#circle" className="use"></use>
     </svg>
-    return <Spin tip={tip} size="large" className="request-loading" />;
 };
 
 export default Loading;

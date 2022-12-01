@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosError, AxiosRequestConfig, AxiosResponse } from "axios"
 import { message } from "antd"
-import { showFullScreenLoading } from "../components/BasicLoading"
+import { hideLoading, showLoading } from "../components/BasicLoading"
 
 const config = {
 	// 默认地址请求地址，可在 .env 开头文件中修改
@@ -62,7 +62,7 @@ class RequestHttp {
 		this.service = axios.create(config)
 		this.service.interceptors.request.use(
 			(config: AxiosRequestConfig) => {
-				showFullScreenLoading()
+				config.headers?.showLoading && showLoading()
 				//todo const token ="eyJhbGciOiJIUzI1NiJ9.eyJvZmZpY2Vf";
 				return { ...config, headers: { ...config.headers } }
 			},
@@ -72,6 +72,7 @@ class RequestHttp {
 		)
 		this.service.interceptors.response.use(
 			(response: AxiosResponse) => {
+				hideLoading()
 				const { data, config } = response
 				if (data.code && data.code !== 200) {
 					message.error(data.msg)
@@ -80,6 +81,7 @@ class RequestHttp {
 				return data
 			},
 			async (error: AxiosError) => {
+				hideLoading()
 				const { response } = error
 				if (error.message.indexOf("timeout") !== -1) message.error("请求超时，请稍后再试")
 				if (response) checkStatus(response.status)

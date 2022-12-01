@@ -1,24 +1,30 @@
-import ReactDOM from "react-dom/client";
-import Loading from "./loading";
 
-let needLoadingRequestCount = 0;
+import ReactDOM from 'react-dom/client';
+import Loading from './loading'
 
-// * 显示loading
-export const showFullScreenLoading = () => {
-    if (needLoadingRequestCount === 0) {
+let loadingCount = 0
+
+
+// 开启loading
+export const showLoading = () => {
+    if (loadingCount === 0) {
         let dom = document.createElement("div");
-        dom.setAttribute("id", "loading");
+        dom.setAttribute("id", "qd-loading");
         document.body.appendChild(dom);
-        ReactDOM.createRoot(dom).render(<Loading />);
+        ReactDOM.createRoot(dom).render(<Loading />)
     }
-    needLoadingRequestCount++;
-};
+    loadingCount++;
+}
 
-// * 隐藏loading
-export const tryHideFullScreenLoading = () => {
-    if (needLoadingRequestCount <= 0) return;
-    needLoadingRequestCount--;
-    if (needLoadingRequestCount === 0) {
-        document.body.removeChild(document.getElementById("loading") as HTMLElement);
+
+
+// 关闭loading
+export const hideLoading = () => {
+    if (loadingCount <= 0) return;
+    loadingCount--;
+    if (loadingCount === 0) {
+        document.body.removeChild(document.getElementById("qd-loading") as HTMLElement)
     }
-};
+}
+
+
