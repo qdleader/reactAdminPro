@@ -16,7 +16,7 @@ const LoginForm = () => {
             setLoading(true);
             const { data } = await loginApi(loginForm);
             message.success("登录成功！");
-            // navigate(HOME_URL);
+            navigate('/home');
         } finally {
             setLoading(false);
         }

@@ -2,6 +2,7 @@
 
 import { Navigate, useRoutes } from "react-router-dom";
 import Login from "../views/login/index";
+import Index from "@/";
 
 
 
@@ -35,6 +36,15 @@ export const rootRouter: RouteObject[] = [
             requiresAuth: false,
             title: "登录页",
             key: "login"
+        }
+    },
+    {
+        path: "/home",
+        element: <Index />,
+        meta: {
+            requiresAuth: false,
+            title: "首页",
+            key: "home"
         }
     },
     {
