@@ -9,14 +9,14 @@ const mongoose = require('mongoose')
 // 连接mongo 并且使用test集合(相当于mysql中的库)
 const DB_URL = 'mongodb://127.0.0.1:27017/'
 
-mongoose.connect("mongodb+srv://hellomryk:yang1314@cluster0.qiraxtc.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true })
+// mongoose.connect("mongodb+srv://hellomryk:yang1314@cluster0.qiraxtc.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true })
 
-  .then(() => {
-    console.log(1111, 'mongoose 连接成功！')
-  })
-  .catch(err => {
-    console.log(2222, err)
-  })
+//   .then(() => {
+//     console.log(1111, 'mongoose 连接成功！')
+//   })
+//   .catch(err => {
+//     console.log(2222, err)
+//   })
 
 
 // mongoose.connect("mongodb+srv://hellomryk:yang1314@cluster0.qiraxtc.mongodb.net/?retryWrites=true&w=majority", { useNewUrlParser: true })
@@ -24,23 +24,24 @@ mongoose.connect("mongodb+srv://hellomryk:yang1314@cluster0.qiraxtc.mongodb.net/
 //   console.log('mongo connect success') //连接成功后输出
 // })
 // 类似于mysql的表 MongoDB里有文档、字段的概念
-const User = mongoose.model('user', new mongoose.Schema({
-  user: { type: String, required: true },
-  time: { type: String, required: true },
-  age: { type: Number, required: true }
-}))
+// const User = mongoose.model('user', new mongoose.Schema({
+//   user: { type: String, required: true },
+//   time: { type: String, required: true },
+//   age: { type: Number, required: true }
+// }))
 // 新建数据，执行一次后可注释掉(执行一次就会插入一条数据)
 
-User.create({
-  user: 'qdleader',
-  age: 20,
-  time: new Date()
-}).then(() => {
-  // res.render("secrets");
-  console.log("插入成功");
-}).catch((err) => {
-  console.log(err);
-})
+// User.create({
+//   user: 'qdleader',
+//   age: 20,
+//   time: new Date()
+// }).then(() => {
+//   // res.render("secrets");
+//   console.log("插入成功");
+// }).catch((err) => {
+//   console.log(err);
+// })
+
 // newUser.save().then(() => {
 //   res.render("secrets");
 // }).catch((err) => {
@@ -62,7 +63,7 @@ User.create({
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var adminRouter = require('./routes/admin/admin');
+var adminRouter = require('./routes/admin/UserRouter');
 
 var app = express();
 
@@ -78,7 +79,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/data', adminRouter);
+app.use(adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

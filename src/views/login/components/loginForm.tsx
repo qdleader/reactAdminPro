@@ -3,7 +3,7 @@ import { Button, Form, Input, message } from "antd";
 import { useNavigate } from "react-router-dom";
 import { Login } from "../../../http/interface";
 import { UserOutlined, LockOutlined, CloseCircleOutlined } from "@ant-design/icons";
-import { loginApi } from "../../../http/modules/login";
+import { loginApi, loginApi1 } from "../../../http/modules/login";
 
 const LoginForm = () => {
     const navigate = useNavigate();
@@ -14,9 +14,10 @@ const LoginForm = () => {
     const onFinish = async (loginForm: Login.ReqLoginForm) => {
         try {
             setLoading(true);
-            const { data } = await loginApi(loginForm);
+            // const { data } = await loginApi(loginForm);
+            const { data } = await loginApi1(loginForm);
             message.success("登录成功！");
-            navigate('/home');
+            // navigate('/home');
         } finally {
             setLoading(false);
         }
