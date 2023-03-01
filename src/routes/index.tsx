@@ -2,7 +2,7 @@
 
 import { Navigate, useRoutes } from "react-router-dom";
 import Login from "../views/login/index";
-import Index from "@/";
+import Index from "@/views/index/index";
 
 
 
