@@ -2,6 +2,7 @@
 
 import { Navigate, useRoutes } from "react-router-dom";
 import Login from "../views/login/index";
+import Register from "../views/register";
 import Index from "@/views/index/index";
 
 
@@ -36,6 +37,15 @@ export const rootRouter: RouteObject[] = [
             requiresAuth: false,
             title: "登录页",
             key: "login"
+        }
+    },
+    {
+        path: "/register",
+        element: <Register />,
+        meta: {
+            requiresAuth: false,
+            title: "注册页",
+            key: "register"
         }
     },
     {

@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react'
-import RegisterForm from './components/loginForm'
+import RegisterForm from './components/registerForm'
 import './index.less'
-export default function Register() {
+export default function Login() {
     return (
         <div className="login-container">
             <div className="login-box">
