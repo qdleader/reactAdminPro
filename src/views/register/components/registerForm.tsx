@@ -3,9 +3,9 @@ import { Button, Form, Input, message } from "antd";
 import { useNavigate } from "react-router-dom";
 import { Login } from "../../../http/interface";
 import { UserOutlined, LockOutlined, CloseCircleOutlined } from "@ant-design/icons";
-import { loginApi, loginApi1 } from "../../../http/modules/login";
+import {  registerApi } from "../../../http/modules/login";
 
-const LoginForm = () => {
+const RegisterForm = () => {
     const navigate = useNavigate();
     const [form] = Form.useForm();
     const [loading, setLoading] = useState<boolean>(false);
@@ -14,9 +14,10 @@ const LoginForm = () => {
     const onFinish = async (loginForm: Login.ReqLoginForm) => {
         try {
             setLoading(true);
-            const { data } = await loginApi1(loginForm);
-            message.success("登录成功！");
-            navigate('/home');
+            // const { data } = await loginApi(loginForm);
+            const { data } = await registerApi(loginForm);
+            message.success("注册成功！");
+            // navigate('/home');
         } finally {
             setLoading(false);
         }
@@ -25,12 +26,9 @@ const LoginForm = () => {
     const onFinishFailed = (errorInfo: any) => {
         console.log("Failed:", errorInfo);
     };
-
-    const goRegister = async () => {
-        navigate('/register');
+    const goLogin = () => {
+        navigate('/login');
     }
-        
-      
     return (
         <Form
             form={form}
@@ -51,17 +49,17 @@ const LoginForm = () => {
             <Form.Item className="login-btn">
                 <Button
                     onClick={() => {
-                        goRegister();
+                        goLogin()
                     }}
                 >
-                    去注册
+                    返回登录
                 </Button>
                 <Button type="primary" htmlType="submit" loading={loading} icon={<UserOutlined />}>
-                    登录
+                    注册
                 </Button>
             </Form.Item>
         </Form>
     );
 };
 
-export default LoginForm;
+export default RegisterForm;

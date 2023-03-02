@@ -27,14 +27,5 @@ const UserType = {
 
 
 const UserModel = mongoose.model("user", new Schema(UserType))
-UserModel.create({
-  username: 'qdleader',
-  password: 123456,
-  time: new Date()
-}).then(() => {
-  // res.render("secrets");
-  console.log("插入成功");
-}).catch((err) => {
-  console.log(err);
-})
+
 module.exports = UserModel
