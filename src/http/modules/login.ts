@@ -9,15 +9,15 @@ export const loginApi = (params: Login.ReqLoginForm) => {
 	return http.post<Login.ResLogin>(`/login`, {}, { headers: { showLoading: true } })
 }
 export const loginApi1 = (params: Login.ReqLoginForm) => {
-	return http.post<Login.ResLogin>(`/api/user/login`, params, { headers: { showLoading: true } })
+	return http.post<Login.ResLogin>(`https://admin-api-cy1w.onrender.com/api/user/login`, params, { headers: { showLoading: true } })
 }
 // 注册
 export const registerApi = (params: Login.ReqLoginForm) => {
-	return http.post<Login.ResLogin>(`/api/user/register`, params, { headers: { showLoading: true } })
+	return http.post<Login.ResLogin>(`https://admin-api-cy1w.onrender.com/api/user/register`, params, { headers: { showLoading: true } })
 }
 
 export const listApi = (params: Login.ReqLoginForm) => {
-	return http.get<Login.ResLogin>(`/list`)
+	return http.get<Login.ResLogin>(`https://admin-api-cy1w.onrender.com//list`)
 }
 
 

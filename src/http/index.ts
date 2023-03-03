@@ -8,7 +8,7 @@ const config = {
 	// 设置超时时间（10s）
 	timeout: 10000,
 	// 跨域时候允许携带凭证
-	withCredentials: true,
+	// withCredentials: true,
 }
 
 export interface Result {
