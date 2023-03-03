@@ -13,10 +13,10 @@ const config = {
 
 export interface Result {
 	code: string
+	token: string
 	resultMsg: string
 }
 export interface ResultData<T = any> extends Result {
-	token(arg0: string, token: any)
 	data?: T
 }
 export const checkStatus = (status: number): void => {
