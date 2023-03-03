@@ -14,8 +14,10 @@ const LoginForm = () => {
     const onFinish = async (loginForm: Login.ReqLoginForm) => {
         try {
             setLoading(true);
-            const { data } = await loginApi1(loginForm);
+            const data = await loginApi1(loginForm);
             message.success("登录成功！");
+
+			sessionStorage.setItem("token",data.token + "")
             navigate('/home');
         } finally {
             setLoading(false);

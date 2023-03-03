@@ -16,6 +16,7 @@ export interface Result {
 	resultMsg: string
 }
 export interface ResultData<T = any> extends Result {
+	token(arg0: string, token: any)
 	data?: T
 }
 export const checkStatus = (status: number): void => {
@@ -63,8 +64,8 @@ class RequestHttp {
 		this.service.interceptors.request.use(
 			(config: AxiosRequestConfig) => {
 				config.headers?.showLoading && showLoading()
-				//todo const token ="eyJhbGciOiJIUzI1NiJ9.eyJvZmZpY2Vf";
-				return { ...config, headers: { ...config.headers } }
+				const token = sessionStorage.getItem("token");
+				return { ...config, headers: { token, ...config.headers } }
 			},
 			(error: AxiosError) => {
 				return Promise.reject(error)

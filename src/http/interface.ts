@@ -5,9 +5,13 @@ export namespace Login {
 	}
 	export interface ResLogin {
 		access_token: string
+		token: string
 		userName: string
 		officeName: string
 		userAvatar: string
+	}
+	export interface ResLoginType {
+		token: string
 	}
 	export interface ResAuthButtons {
 		[propName: string]: any
