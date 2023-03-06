@@ -17,3 +17,8 @@ export namespace Login {
 		[propName: string]: any
 	}
 }
+export namespace UploadState {
+	export interface UploadFile {
+		file: any
+	}
+}

@@ -4,6 +4,7 @@ import { Navigate, useRoutes } from "react-router-dom";
 import Login from "../views/login/index";
 import Register from "../views/register";
 import Index from "@/views/index/index";
+import Upload from "@/views/upload/index";
 
 
 
@@ -55,6 +56,15 @@ export const rootRouter: RouteObject[] = [
             requiresAuth: false,
             title: "首页",
             key: "home"
+        }
+    },
+    {
+        path: "/upload",
+        element: <Upload />,
+        meta: {
+            requiresAuth: false,
+            title: "上传",
+            key: "upload"
         }
     },
     {
