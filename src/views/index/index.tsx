@@ -1,3 +1,4 @@
+import { userAdd } from '@/http/modules/user';
 import { Button } from 'antd'
 import React, { useState } from 'react'
 import AddUser from './components/addUser';
@@ -5,8 +6,10 @@ import AddUser from './components/addUser';
 export default function index() {
     const [open, setOpen] = useState(false);
 
-    const onCreate = (values: any) => {
+    const onCreate = async (values: any) => {
         console.log('Received values of form: ', values);
+
+        let data = await userAdd(values)
         setOpen(false);
     };
 

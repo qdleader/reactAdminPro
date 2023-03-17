@@ -22,9 +22,7 @@ const addUser = (props: CollectionCreateFormProps) => {
     onCancel,
   } = props
   const [form] = Form.useForm();
-  useEffect(() => {
-    console.log(11,open);
-  },[open])
+
   return (
  <Modal
       open={open}

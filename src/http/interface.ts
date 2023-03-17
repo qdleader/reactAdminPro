@@ -22,3 +22,16 @@ export namespace UploadState {
 		file: any
 	}
 }
+
+export namespace User {
+	export interface ReqUserAdd {
+		access_token: string
+		token: string
+		userName: string
+		officeName: string
+		userAvatar: string
+	}
+	export interface ResUserAdd {
+		data: string
+	}
+}
