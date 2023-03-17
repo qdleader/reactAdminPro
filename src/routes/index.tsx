@@ -5,6 +5,7 @@ import Login from "../views/login/index";
 import Register from "../views/register";
 import Index from "@/views/index/index";
 import Upload from "@/views/upload/index";
+import LayoutIndex from "@/views/layouts/index";
 
 
 
@@ -50,14 +51,31 @@ export const rootRouter: RouteObject[] = [
         }
     },
     {
-        path: "/home",
-        element: <Index />,
-        meta: {
-            requiresAuth: false,
-            title: "首页",
-            key: "home"
-        }
-    },
+		element: <LayoutIndex />,
+		meta: {
+			title: "渠道管理",
+		},
+		children: [
+			{
+				path: "/home",
+				element: <Index />,
+				meta: {
+					requiresAuth: true,
+					title: "线索管理",
+					key: "clueManager",
+				}
+			}
+		]
+	},
+    // {
+    //     path: "/home",
+    //     element: <Index />,
+    //     meta: {
+    //         requiresAuth: false,
+    //         title: "首页",
+    //         key: "home"
+    //     }
+    // },
     {
         path: "/upload",
         element: <Upload />,

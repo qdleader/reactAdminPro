@@ -1,0 +1,52 @@
+.container {
+	display: flex;
+	min-width: 950px;
+	min-height: 100vh;
+	.ant-layout-sider {
+		box-sizing: border-box;
+	}
+	.ant-layout {
+		/* 防止 tabs 超出不收缩 */
+		overflow-x: hidden;
+		.ant-layout-content {
+			box-sizing: border-box;
+			flex: 1;
+			padding: 10px 12px;
+			overflow-x: hidden;
+		}
+	}
+}
+
+.ant-menu-submenu-title,
+.ant-menu-item {
+	z-index: 0;
+}
+.ant-menu-submenu-title::before,
+.ant-menu-item::before {
+	position: absolute;
+	right: 0;
+	left: 0;
+	z-index: -1;
+	display: block;
+	width: 0;
+	height: 100%;
+	content: "";
+	background: rgb(252 195 5 / 88.8%);
+	box-shadow: 0 0 175px 0 rgb(229 241 7);
+	transition: all 0.6s;
+}
+/* stylelint-disable-next-line no-duplicate-selectors */
+.ant-menu-submenu-title,
+.ant-menu-item {
+	&:hover {
+		color: #ffffff;
+		&::before {
+			width: 100%;
+		}
+	}
+	> a {
+		&:hover {
+			color: #ffffff;
+		}
+	}
+}
