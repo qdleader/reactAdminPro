@@ -8,7 +8,7 @@ const MenuData = [
 		children: [
 			{
 				icon: "AppstoreOutlined",
-				path: "/tenant/list",
+				path: "/home",
 				title: "人员管理",
 				close: true,
 				isShowMenu: true
