@@ -19,6 +19,8 @@ const App: React.FC = () => {
     console.log("formData",formData);
     uploadApi(formData).then((res) => {
       console.log(111,res);
+    }).finally(() => {
+      setUploading(false);
     })
       
       

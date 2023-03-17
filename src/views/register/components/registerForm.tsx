@@ -48,9 +48,7 @@ const RegisterForm = () => {
             </Form.Item>
             <Form.Item className="login-btn">
                 <Button
-                    onClick={() => {
-                        goLogin()
-                    }}
+                    onClick={goLogin}
                 >
                     返回登录
                 </Button>
