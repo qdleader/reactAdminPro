@@ -1,10 +1,11 @@
-import { userAdd, userList } from '@/http/modules/user';
+import { userAdd, userDelete, userList } from '@/http/modules/user';
 import { Button } from 'antd'
 import { useState, useEffect } from 'react'
 import { Space, Table, Tag } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 import AddUser from './components/addUser';
 import { User } from '@/http/interface';
+import { message } from 'antd';
 
 
 export default function index() {
@@ -17,6 +18,13 @@ export default function index() {
             title: '姓名',
             dataIndex: 'name',
             key: 'name',
+            width:100,
+            render: (text) => <a>{text}</a>,
+          },
+        {
+            title: 'id',
+            dataIndex: '_id',
+            key: '_id',
             render: (text) => <a>{text}</a>,
           },
         {
@@ -47,7 +55,7 @@ export default function index() {
           render: (_, record) => (
             <Space size="middle">
               {/* <a>Invite {record.hobby}</a> */}
-              <a>删除</a>
+              <div onClick={() => lineDelete(record._id)}>删除</div>
             </Space>
           ),
         },
@@ -69,6 +77,13 @@ export default function index() {
         })
         console.log("list", data);
         setData(data)
+    }
+    const lineDelete = async (id: number) => {
+        console.log(id);
+        let data = await userDelete(id)
+        message.success("删除成功")
+        getList()
+        console.log("userDelete", data);
     }
     useEffect(() => {
         getList()
