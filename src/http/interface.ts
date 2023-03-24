@@ -34,4 +34,14 @@ export namespace User {
 	export interface ResUserAdd {
 		data: string
 	}
+	export interface ResUserListItem {
+		key?: string;
+		createTime: string;
+		address: number;
+		description: string;
+		hobby: string;
+	}
+	export interface ResUserList {
+		data: ResUserListItem[]
+	}
 }

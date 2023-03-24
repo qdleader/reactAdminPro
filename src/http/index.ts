@@ -79,7 +79,7 @@ class RequestHttp {
 					message.error(data.msg)
 					return Promise.reject(data)
 				}
-				return data
+				return data?.data
 			},
 			async (error: AxiosError) => {
 				hideLoading()

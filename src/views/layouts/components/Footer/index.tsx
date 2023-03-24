@@ -4,7 +4,7 @@ const LayoutFooter = (props: any) => {
 	return (
 		<>
 <div className="footer">
-					<span>2022 © qdleader-Admin</span>
+					<span>2023 © qdleader-Admin</span>
 				</div>
 		</>
 	);
