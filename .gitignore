@@ -6,10 +6,12 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+package-lock.json
 
 node_modules
 dist-ssr
 package-lock.json
+*.json
 *.local
 
 # Editor directories and files

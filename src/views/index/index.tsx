@@ -72,11 +72,11 @@ export default function index() {
     };
     const getList = async () => {
         let data = await userList()
-        data?.map((item:any) => {
+        data?.data?.map((item:any) => {
             item.key = item._id
         })
         console.log("list", data);
-        setData(data)
+        setData(data?.data)
     }
     const lineDelete = async (id: number) => {
         console.log(id);
