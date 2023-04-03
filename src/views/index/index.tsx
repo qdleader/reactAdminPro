@@ -1,4 +1,4 @@
-import { userAdd, userDelete, userList } from '@/http/modules/user';
+import { userAdd, userDelete, userEdit, userList } from '@/http/modules/user';
 import { Button } from 'antd'
 import { useState, useEffect } from 'react'
 import { Space, Table, Tag } from 'antd';
@@ -10,6 +10,7 @@ import { message } from 'antd';
 
 export default function index() {
     const [open, setOpen] = useState(false);
+    const [currentId, setCurrentId] = useState(0);
 
     const [data,setData] = useState<User.ResUserListItem[] >([])
       
@@ -55,7 +56,8 @@ export default function index() {
           render: (_, record) => (
             <Space size="middle">
               {/* <a>Invite {record.hobby}</a> */}
-              <div onClick={() => lineDelete(record._id)}>删除</div>
+              <Button onClick={() => lineEdit(record._id)}>编辑</Button>
+              <Button onClick={() => lineDelete(record._id)}>删除</Button>
             </Space>
           ),
         },
@@ -70,6 +72,14 @@ export default function index() {
         setOpen(false);
         getList()
     };
+    const onEdit = async (values: any) => {
+      console.log("编辑",values);
+      let data = await userEdit(values)
+      setOpen(false);
+      message.success("编辑成功")
+      getList()
+      console.log("编辑返回内容", data);
+  }
     const getList = async () => {
         let data = await userList()
         data?.data?.map((item:any) => {
@@ -78,6 +88,15 @@ export default function index() {
         console.log("list", data);
         setData(data?.data)
     }
+    const lineEdit = async (id: number) => {
+      console.log(id);
+      setCurrentId(id)
+      setOpen(true);
+        // let data = await userDelete(id)
+        // message.success("删除成功")
+        // getList()
+        // console.log("lineEdit", data);
+    }
     const lineDelete = async (id: number) => {
         console.log(id);
         let data = await userDelete(id)
@@ -85,6 +104,7 @@ export default function index() {
         getList()
         console.log("userDelete", data);
     }
+
     useEffect(() => {
         getList()
     },[])
@@ -92,10 +112,13 @@ export default function index() {
     return (
         <div>
             <Button type="primary" onClick={() => {
-                setOpen(true);
+              setOpen(true);
+              setCurrentId(0)
                 }}>添加用户</Button>
             <AddUser   open={open}
                 onCreate={onCreate}
+                onEdit={onEdit}
+                currentId={currentId}
                 onCancel={() => {
                 setOpen(false);
                 }} />

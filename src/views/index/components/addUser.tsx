@@ -3,6 +3,7 @@ import React from 'react'
 import { useEffect } from 'react';
 
 interface Values {
+  _id?: string;
   title: string;
   description: string;
   address: string;
@@ -11,18 +12,37 @@ interface Values {
 
 interface CollectionCreateFormProps {
   open: boolean;
+  currentId: number;
   onCreate: (values: Values) => void;
+  onEdit: (values: Values) => void;
   onCancel: () => void;
 }
 
 const addUser = (props: CollectionCreateFormProps) => {
   const {
     open,
+    currentId,
     onCreate,
+    onEdit,
     onCancel,
   } = props
   const [form] = Form.useForm();
 
+  const submitForm = () => {
+    form
+      .validateFields()
+      .then((values) => {
+        form.resetFields();
+            if (currentId) {
+              onEdit({ ...values, _id:currentId});
+            } else {
+              onCreate(values);
+            }
+          })
+          .catch((info) => {
+            console.log('Validate Failed:', info);
+          });
+  }
   return (
  <Modal
       open={open}
@@ -30,17 +50,7 @@ const addUser = (props: CollectionCreateFormProps) => {
       okText="Create"
       cancelText="Cancel"
       onCancel={onCancel}
-      onOk={() => {
-        form
-          .validateFields()
-          .then((values) => {
-            form.resetFields();
-            onCreate(values);
-          })
-          .catch((info) => {
-            console.log('Validate Failed:', info);
-          });
-      }}
+      onOk={submitForm}
     >
       <Form
         form={form}
