@@ -6,11 +6,15 @@ import type { ColumnsType } from 'antd/es/table';
 import AddUser from './components/addUser';
 import { User } from '@/http/interface';
 import { message } from 'antd';
+import SearchForm from './components/searchForm';
+import { ISearchRecordParams } from './interface';
+import styles from "./index.module.scss"
 
 
 export default function index() {
     const [open, setOpen] = useState(false);
-    const [currentId, setCurrentId] = useState(0);
+  const [currentId, setCurrentId] = useState(0);
+  const [searchParams, setSearchParams] = useState<ISearchRecordParams>({});
 
     const [data,setData] = useState<User.ResUserListItem[] >([])
       
@@ -81,7 +85,7 @@ export default function index() {
       console.log("编辑返回内容", data);
   }
     const getList = async () => {
-        let data = await userList()
+        let data = await userList(searchParams)
         data?.data?.map((item:any) => {
             item.key = item._id
         })
@@ -104,14 +108,19 @@ export default function index() {
         getList()
         console.log("userDelete", data);
     }
-
+    const handleSearch = async (searchRecordParams: ISearchRecordParams, pageNo: number) => {
+      setSearchParams(searchRecordParams);
+    };
     useEffect(() => {
         getList()
-    },[])
+    },[searchParams])
 
     return (
-        <div>
-            <Button type="primary" onClick={() => {
+      <div>
+          <div className={styles.searchBox}>
+              <SearchForm searchData={handleSearch} />
+          </div>
+            <Button type="primary" className={styles.searchBtn} onClick={() => {
               setOpen(true);
               setCurrentId(0)
                 }}>添加用户</Button>

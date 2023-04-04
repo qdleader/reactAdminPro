@@ -31,6 +31,9 @@ export namespace User {
 		officeName: string
 		userAvatar: string
 	}
+	export interface ReqUserList {
+		name?: string
+	}
 	export interface ResUserAdd {
 		data: string
 	}
