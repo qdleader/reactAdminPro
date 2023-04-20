@@ -1,4 +1,5 @@
-import { userAdd, userDelete, userEdit, userList } from "@/http/modules/user"
+import { userAdd, userDelete, userEdit } from "@/http/modules/user"
+import { deptsList } from "@/http/modules/depts"
 import { Button } from "antd"
 import { useState, useEffect } from "react"
 import { Space, Table, Tag } from "antd"
@@ -23,6 +24,7 @@ export default function index() {
 			dataIndex: "name",
 			key: "name",
 			width: 100,
+			render: (text) => <>{text}</>,
 		},
 		{
 			title: "id",
@@ -42,12 +44,7 @@ export default function index() {
 			key: "updateTime",
 			render: (text) => <>{text}</>,
 		},
-		{
-			title: "爱好",
-			dataIndex: "hobby",
-			key: "hobby",
-			render: (text) => <>{text}</>,
-		},
+
 		{
 			title: "操作",
 			key: "action",
@@ -77,11 +74,11 @@ export default function index() {
 		console.log("编辑返回内容", data)
 	}
 	const getList = async () => {
-		let data = await userList(searchParams)
+		let data = await deptsList(searchParams)
+		console.log("data", data)
 		data?.data?.map((item: any) => {
 			item.key = item.id
 		})
-		console.log("list", data)
 		setData(data?.data)
 	}
 	const lineEdit = async (id: number) => {

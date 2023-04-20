@@ -33,22 +33,22 @@ const MenuData = [
 	},
 	{
 		icon: "ContainerOutlined",
-		title: "内容管理",
-		path: "/content",
+		title: "部门管理",
+		path: "/depts",
 		isShowMenu: true,
 		close: true,
 		children: [
 			{
 				icon: "CustomerServiceOutlined",
-				path: "/content/record",
-				title: "录音管理",
+				path: "/depts/depts",
+				title: "部门管理",
 				close: true,
 				isShowMenu: true
 			},
 			{
 				icon: "RobotOutlined",
-				path: "/content/course",
-				title: "课程管理",
+				path: "/depts/people",
+				title: "人员管理",
 				close: true,
 				isShowMenu: true
 			},

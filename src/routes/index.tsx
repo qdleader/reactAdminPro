@@ -1,56 +1,52 @@
-
-
-import { Navigate, useRoutes } from "react-router-dom";
-import Login from "../views/login/index";
-import Register from "../views/register";
-import Index from "@/views/index/index";
-import Upload from "@/views/upload/index";
-import LayoutIndex from "@/views/layouts/index";
-
-
+import { Navigate, useRoutes } from "react-router-dom"
+import Login from "../views/login/index"
+import Register from "../views/register"
+import Index from "@/views/index/index"
+import Depts from "@/views/depts/depts"
+import Upload from "@/views/upload/index"
+import LayoutIndex from "@/views/layouts/index"
 
 export interface MetaProps {
-    keepAlive?: boolean;
-    requiresAuth?: boolean;
-    title: string;
-    key?: string;
+	keepAlive?: boolean
+	requiresAuth?: boolean
+	title: string
+	key?: string
 }
 
 export interface RouteObject {
-    caseSensitive?: boolean;
-    children?: RouteObject[];
-    element?: React.ReactNode;
-    // index?: boolean | undefined;
-    path?: string;
-    meta?: MetaProps;
-    isLink?: string;
+	caseSensitive?: boolean
+	children?: RouteObject[]
+	element?: React.ReactNode
+	// index?: boolean | undefined;
+	path?: string
+	meta?: MetaProps
+	isLink?: string
 }
 
-
 export const rootRouter: RouteObject[] = [
-    {
-        path: "/",
-        element: <Navigate to="/login" />
-    },
-    {
-        path: "/login",
-        element: <Login />,
-        meta: {
-            requiresAuth: false,
-            title: "登录页",
-            key: "login"
-        }
-    },
-    {
-        path: "/register",
-        element: <Register />,
-        meta: {
-            requiresAuth: false,
-            title: "注册页",
-            key: "register"
-        }
-    },
-    {
+	{
+		path: "/",
+		element: <Navigate to="/login" />,
+	},
+	{
+		path: "/login",
+		element: <Login />,
+		meta: {
+			requiresAuth: false,
+			title: "登录页",
+			key: "login",
+		},
+	},
+	{
+		path: "/register",
+		element: <Register />,
+		meta: {
+			requiresAuth: false,
+			title: "注册页",
+			key: "register",
+		},
+	},
+	{
 		element: <LayoutIndex />,
 		meta: {
 			title: "渠道管理",
@@ -63,38 +59,63 @@ export const rootRouter: RouteObject[] = [
 					requiresAuth: true,
 					title: "线索管理",
 					key: "clueManager",
-				}
-			}
-		]
+				},
+			},
+		],
 	},
-    // {
-    //     path: "/home",
-    //     element: <Index />,
-    //     meta: {
-    //         requiresAuth: false,
-    //         title: "首页",
-    //         key: "home"
-    //     }
-    // },
-    {
-        path: "/upload",
-        element: <Upload />,
-        meta: {
-            requiresAuth: false,
-            title: "上传",
-            key: "upload"
-        }
-    },
-    {
-        path: "*",
-        element: <Navigate to="/404" />
-    }
-];
+	{
+		element: <LayoutIndex />,
+		meta: {
+			title: "部门管理",
+		},
+		children: [
+			{
+				path: "/depts/depts",
+				element: <Depts />,
+				meta: {
+					requiresAuth: true,
+					title: "线索管理",
+					key: "/depts/depts",
+				},
+			},
+			{
+				path: "/depts/people",
+				element: <Index />,
+				meta: {
+					requiresAuth: true,
+					title: "线索管理",
+					key: "/depts/people",
+				},
+			},
+		],
+	},
+	// {
+	//     path: "/home",
+	//     element: <Index />,
+	//     meta: {
+	//         requiresAuth: false,
+	//         title: "首页",
+	//         key: "home"
+	//     }
+	// },
+	{
+		path: "/upload",
+		element: <Upload />,
+		meta: {
+			requiresAuth: false,
+			title: "上传",
+			key: "upload",
+		},
+	},
+	{
+		path: "*",
+		element: <Navigate to="/404" />,
+	},
+]
 
 const Router = () => {
-    const routes = useRoutes(rootRouter);
-    return routes;
-};
+	const routes = useRoutes(rootRouter)
+	return routes
+}
 
-export default Router;
-
+export default Router

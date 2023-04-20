@@ -2,6 +2,8 @@ import axios, { AxiosInstance, AxiosError, AxiosRequestConfig, AxiosResponse } f
 import { message } from "antd"
 import { hideLoading, showLoading } from "../components/BasicLoading"
 
+
+
 const config = {
 	// 默认地址请求地址，可在 .env 开头文件中修改
 	baseURL: import.meta.env.VITE_API_URL as string,
@@ -11,6 +13,7 @@ const config = {
 	// withCredentials: true,
 }
 
+export const baseUrl = 'http://39.105.192.202:5627'
 export interface Result {
 	code: string
 	token: string
@@ -75,7 +78,8 @@ class RequestHttp {
 			(response: AxiosResponse) => {
 				hideLoading()
 				const { data, config } = response
-				if (data.code && data.code !== 200) {
+				console.log("data", data);
+				if (data.code && data.code !== 200 && data.code !== 1) {
 					message.error(data.msg)
 					return Promise.reject(data)
 				}
