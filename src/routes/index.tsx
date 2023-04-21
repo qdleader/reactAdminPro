@@ -3,6 +3,7 @@ import Login from "../views/login/index"
 import Register from "../views/register"
 import Index from "@/views/index/index"
 import Depts from "@/views/depts/depts"
+import Emps from "@/views/depts/emps"
 import Upload from "@/views/upload/index"
 import LayoutIndex from "@/views/layouts/index"
 
@@ -79,12 +80,12 @@ export const rootRouter: RouteObject[] = [
 				},
 			},
 			{
-				path: "/depts/people",
-				element: <Index />,
+				path: "/depts/emps",
+				element: <Emps />,
 				meta: {
 					requiresAuth: true,
 					title: "线索管理",
-					key: "/depts/people",
+					key: "/depts/emps",
 				},
 			},
 		],

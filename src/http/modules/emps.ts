@@ -14,8 +14,8 @@ export const userEdit = (params: User.ReqUserAdd) => {
   return http.put<User.ResUserAdd>(`/api/user/edit`, params, { headers: { showLoading: true } })
   // return http.post<Login.ResLogin>(`https://admin-api-cy1w.onrender.com/api/user/login`, params, { headers: { showLoading: true } })
 }
-export const deptsList = (params: User.ReqUserList) => {
-  return http.get<User.ResUserList>(`${baseUrl}/depts`, params, { headers: { showLoading: true } })
+export const empsList = (params: User.ReqUserList) => {
+  return http.get<User.ResUserList>(`${baseUrl}/emps`, params, { headers: { showLoading: true } })
   // return http.post<Login.ResLogin>(`https://admin-api-cy1w.onrender.com/api/user/login`, params, { headers: { showLoading: true } })
 }
 export const userDelete = (id: number) => {

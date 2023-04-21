@@ -47,7 +47,7 @@ const MenuData = [
 			},
 			{
 				icon: "RobotOutlined",
-				path: "/depts/people",
+				path: "/depts/emps",
 				title: "人员管理",
 				close: true,
 				isShowMenu: true

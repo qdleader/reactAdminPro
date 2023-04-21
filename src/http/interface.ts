@@ -48,3 +48,5 @@ export namespace User {
 		data: ResUserListItem[]
 	}
 }
+
+
