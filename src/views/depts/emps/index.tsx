@@ -1,5 +1,5 @@
 import { userAdd, userDelete, userEdit } from "@/http/modules/user"
-import { empsList } from "@/http/modules/emps"
+import { empsAdd, empsList } from "@/http/modules/emps"
 
 import { Button } from "antd"
 import { useState, useEffect } from "react"
@@ -85,8 +85,8 @@ export default function index() {
 			render: (_, record) => (
 				<Space size="middle">
 					{/* <a>Invite {record.hobby}</a> */}
-					<Button onClick={() => lineEdit(record._id)}>编辑</Button>
-					<Button onClick={() => lineDelete(record._id)}>删除</Button>
+					<Button onClick={() => lineEdit(record.id)}>编辑</Button>
+					<Button onClick={() => lineDelete(record.id)}>删除</Button>
 				</Space>
 			),
 		},
@@ -95,7 +95,7 @@ export default function index() {
 	const onCreate = async (values: any) => {
 		console.log("Received values of form: ", values)
 
-		let data = await userAdd(values)
+		let data = await empsAdd(values)
 		setOpen(false)
 		getList()
 	}
