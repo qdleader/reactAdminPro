@@ -110,7 +110,7 @@ export default function index() {
 	const getList = async () => {
 		let data = await empsList(searchParams)
 		data?.data?.rows?.map((item: any) => {
-			item.key = item._id
+			item.key = item.id
 		})
 		console.log("emps-list", data)
 		setData(data?.data?.rows)

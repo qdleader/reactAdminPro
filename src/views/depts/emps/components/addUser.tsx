@@ -115,9 +115,15 @@ const addUser = (props: CollectionCreateFormProps) => {
 				</Form.Item>
 				<Form.Item label="Select" name="select">
 					<Select>
-						<Select.Option value="1">市场部</Select.Option>
-						<Select.Option value="2">运营部</Select.Option>
-						<Select.Option value="3">产品部</Select.Option>
+						<Select.Option value="1" key={1}>
+							市场部
+						</Select.Option>
+						<Select.Option value="2" key={2}>
+							运营部
+						</Select.Option>
+						<Select.Option value="3" key={3}>
+							产品部
+						</Select.Option>
 					</Select>
 				</Form.Item>
 
