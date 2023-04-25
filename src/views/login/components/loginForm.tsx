@@ -15,9 +15,10 @@ const LoginForm = () => {
 		try {
 			setLoading(true)
 			const data = await loginApi1(loginForm)
+			console.log("login-data", data)
 			message.success("登录成功！")
 
-			sessionStorage.setItem("token", data.token + "")
+			sessionStorage.setItem("token", data.data + "")
 			navigate("/depts/depts")
 		} finally {
 			setLoading(false)

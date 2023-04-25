@@ -1,5 +1,5 @@
 import { userAdd, userDelete, userEdit } from "@/http/modules/user"
-import { deptsList } from "@/http/modules/depts"
+import { deptsAdd, deptsDelete, deptsEdit, deptsInfo, deptsList } from "@/http/modules/depts"
 import { Button } from "antd"
 import { useState, useEffect } from "react"
 import { Space, Table, Tag } from "antd"
@@ -14,6 +14,7 @@ import styles from "./index.module.scss"
 export default function index() {
 	const [open, setOpen] = useState(false)
 	const [currentId, setCurrentId] = useState(0)
+	const [name, setName] = useState("")
 	const [searchParams, setSearchParams] = useState<ISearchRecordParams>({})
 
 	const [data, setData] = useState<User.ResUserListItem[]>([])
@@ -61,13 +62,14 @@ export default function index() {
 	const onCreate = async (values: any) => {
 		console.log("Received values of form: ", values)
 
-		let data = await userAdd(values)
+		let data = await deptsAdd(values)
+		message.success("添加成功")
 		setOpen(false)
 		getList()
 	}
 	const onEdit = async (values: any) => {
 		console.log("编辑", values)
-		let data = await userEdit(values)
+		let data = await deptsEdit(values)
 		setOpen(false)
 		message.success("编辑成功")
 		getList()
@@ -85,14 +87,15 @@ export default function index() {
 		console.log(id)
 		setCurrentId(id)
 		setOpen(true)
-		// let data = await userDelete(id)
+		let data = await deptsInfo(id)
 		// message.success("删除成功")
 		// getList()
-		// console.log("lineEdit", data);
+		console.log("deptsInfo", data?.data?.name)
+		setName(data?.data?.name)
 	}
 	const lineDelete = async (id: number) => {
 		console.log(id)
-		let data = await userDelete(id)
+		let data = await deptsDelete(id)
 		message.success("删除成功")
 		getList()
 		console.log("userDelete", data)
@@ -114,16 +117,18 @@ export default function index() {
 				className={styles.searchBtn}
 				onClick={() => {
 					setOpen(true)
+					setName("")
 					setCurrentId(0)
 				}}
 			>
-				添加用户
+				添加部门
 			</Button>
 			<AddUser
 				open={open}
 				onCreate={onCreate}
 				onEdit={onEdit}
 				currentId={currentId}
+				name={name}
 				onCancel={() => {
 					setOpen(false)
 				}}
