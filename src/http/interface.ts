@@ -39,6 +39,7 @@ export namespace User {
 	}
 	export interface ResUserListItem {
 		key?: string;
+		id: number;
 		createTime: string;
 		address: number;
 		description: string;

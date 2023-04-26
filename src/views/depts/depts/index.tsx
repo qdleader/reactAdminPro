@@ -14,6 +14,7 @@ import styles from "./index.module.scss"
 export default function index() {
 	const [open, setOpen] = useState(false)
 	const [currentId, setCurrentId] = useState(0)
+	const [total, setTotal] = useState(0)
 	const [name, setName] = useState("")
 	const [searchParams, setSearchParams] = useState<ISearchRecordParams>({})
 
@@ -51,7 +52,6 @@ export default function index() {
 			key: "action",
 			render: (_, record) => (
 				<Space size="middle">
-					{/* <a>Invite {record.hobby}</a> */}
 					<Button onClick={() => lineEdit(record.id)}>编辑</Button>
 					<Button onClick={() => lineDelete(record.id)}>删除</Button>
 				</Space>
@@ -78,10 +78,12 @@ export default function index() {
 	const getList = async () => {
 		let data = await deptsList(searchParams)
 		console.log("data", data)
-		data?.data?.map((item: any) => {
+		data?.data?.rows?.map((item: any) => {
 			item.key = item.id
 		})
-		setData(data?.data)
+
+		setData(data?.data?.rows)
+		setTotal(data?.data?.total)
 	}
 	const lineEdit = async (id: number) => {
 		console.log(id)
@@ -90,7 +92,6 @@ export default function index() {
 		let data = await deptsInfo(id)
 		// message.success("删除成功")
 		// getList()
-		console.log("deptsInfo", data?.data?.name)
 		setName(data?.data?.name)
 	}
 	const lineDelete = async (id: number) => {
@@ -102,6 +103,9 @@ export default function index() {
 	}
 	const handleSearch = async (searchRecordParams: ISearchRecordParams, pageNo: number) => {
 		setSearchParams(searchRecordParams)
+	}
+	const handleChangePage = (page: number, size: number) => {
+		setSearchParams({ ...searchParams, page, pageSize: size })
 	}
 	useEffect(() => {
 		getList()
@@ -133,7 +137,11 @@ export default function index() {
 					setOpen(false)
 				}}
 			/>
-			<Table columns={columns} dataSource={data} />
+			<Table
+				columns={columns}
+				pagination={{ total: total, pageSize: 10, onChange: handleChangePage, showSizeChanger: false }}
+				dataSource={data}
+			/>
 		</div>
 	)
 }
