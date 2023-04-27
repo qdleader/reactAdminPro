@@ -1,5 +1,5 @@
 import { userAdd, userDelete, userEdit } from "@/http/modules/user"
-import { empsAdd, empsList } from "@/http/modules/emps"
+import { empsAdd, empsEdit, empsList } from "@/http/modules/emps"
 
 import { Button } from "antd"
 import { useState, useEffect } from "react"
@@ -101,7 +101,7 @@ export default function index() {
 	}
 	const onEdit = async (values: any) => {
 		console.log("编辑", values)
-		let data = await userEdit(values)
+		let data = await empsEdit(values)
 		setOpen(false)
 		message.success("编辑成功")
 		getList()

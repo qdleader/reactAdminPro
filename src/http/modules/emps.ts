@@ -11,12 +11,16 @@ export const empsAdd = (params: User.ReqUserAdd) => {
   // return http.post<Login.ResLogin>(`https://admin-api-cy1w.onrender.com/api/user/login`, params, { headers: { showLoading: true } })
 }
 // 编辑
-export const userEdit = (params: User.ReqUserAdd) => {
-  return http.put<User.ResUserAdd>(`/api/user/edit`, params, { headers: { showLoading: true } })
+export const empsEdit = (params: User.ReqUserAdd) => {
+  return http.put<User.ResUserAdd>(`${baseUrl}/emps`, params, { headers: { showLoading: true } })
   // return http.post<Login.ResLogin>(`https://admin-api-cy1w.onrender.com/api/user/login`, params, { headers: { showLoading: true } })
 }
 export const empsList = (params: User.ReqUserList) => {
   return http.get<User.ResUserList>(`${baseUrl}/emps`, params, { headers: { showLoading: true } })
+  // return http.post<Login.ResLogin>(`https://admin-api-cy1w.onrender.com/api/user/login`, params, { headers: { showLoading: true } })
+}
+export const empsInfo = (id: number) => {
+  return http.get<User.ResUserList>(`${baseUrl}/emps/${id}`, {}, { headers: { showLoading: true } })
   // return http.post<Login.ResLogin>(`https://admin-api-cy1w.onrender.com/api/user/login`, params, { headers: { showLoading: true } })
 }
 export const userDelete = (id: number) => {

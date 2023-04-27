@@ -7,6 +7,7 @@ import type { UploadChangeParam } from "antd/es/upload"
 import type { RcFile, UploadFile } from "antd/es/upload/interface"
 import { LoadingOutlined, PlusOutlined } from "@ant-design/icons"
 import { uploadApi } from "@/http/modules/upload"
+import { empsInfo } from "@/http/modules/emps"
 
 interface Values {
 	id?: string
@@ -89,6 +90,27 @@ const addUser = (props: CollectionCreateFormProps) => {
 			})
 		}
 	}
+	const getInfo = async (currentId: number) => {
+		let data = await empsInfo(currentId)
+		console.log("datainfo", data)
+		const { name, gender, username, password, job, image, deptId, id } = data.data
+		form.setFieldsValue({
+			name: name,
+			gender: gender + "",
+			username: username,
+			password: password,
+			job: job,
+			image: image,
+			deptId: deptId,
+			id: id,
+		})
+		setImageUrl(image)
+	}
+	useEffect(() => {
+		if (open && currentId) {
+			getInfo(currentId)
+		}
+	}, [open])
 	const uploadButton = (
 		<div>
 			{loading ? <LoadingOutlined /> : <PlusOutlined />}
@@ -99,21 +121,21 @@ const addUser = (props: CollectionCreateFormProps) => {
 	return (
 		<Modal open={open} title="Create a new collection" okText="Create" cancelText="Cancel" onCancel={onCancel} onOk={submitForm}>
 			<Form form={form} layout="vertical" name="form_in_modal" initialValues={{ modifier: "public" }}>
-				<Form.Item name="name" label="用户名" rules={[{ required: true, message: "不能为空" }]}>
+				<Form.Item name="name" label="姓名" rules={[{ required: true, message: "不能为空" }]}>
 					<Input />
 				</Form.Item>
-				<Form.Item name="username" label="手机号" rules={[{ required: true, message: "不能为空" }]}>
+				<Form.Item name="username" label="账号名" rules={[{ required: true, message: "不能为空" }]}>
 					<Input type="textarea" />
 				</Form.Item>
 				<Form.Item
-					name="job"
+					name="password"
 					label="工作"
 					className="collection-create-form_last-form-item"
 					rules={[{ required: true, message: "不能为空" }]}
 				>
 					<Input type="textarea" />
 				</Form.Item>
-				<Form.Item label="Select" name="select">
+				<Form.Item label="工作" name="job">
 					<Select>
 						<Select.Option value="1" key={1}>
 							市场部
