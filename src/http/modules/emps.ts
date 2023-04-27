@@ -23,8 +23,8 @@ export const empsInfo = (id: number) => {
   return http.get<User.ResUserList>(`${baseUrl}/emps/${id}`, {}, { headers: { showLoading: true } })
   // return http.post<Login.ResLogin>(`https://admin-api-cy1w.onrender.com/api/user/login`, params, { headers: { showLoading: true } })
 }
-export const userDelete = (id: number) => {
-  return http.delete<User.ResUserList>(`/api/user/delete/${id}`, {}, { headers: { showLoading: true } })
+export const empsDelete = (id: number) => {
+  return http.delete<User.ResUserList>(`${baseUrl}/emps/${id}`, {}, { headers: { showLoading: true } })
   // return http.post<Login.ResLogin>(`https://admin-api-cy1w.onrender.com/api/user/login`, params, { headers: { showLoading: true } })
 }
 

@@ -1,5 +1,5 @@
 import { userAdd, userDelete, userEdit } from "@/http/modules/user"
-import { empsAdd, empsEdit, empsList } from "@/http/modules/emps"
+import { empsAdd, empsDelete, empsEdit, empsList } from "@/http/modules/emps"
 
 import { Button } from "antd"
 import { useState, useEffect } from "react"
@@ -126,7 +126,7 @@ export default function index() {
 	}
 	const lineDelete = async (id: number) => {
 		console.log(id)
-		let data = await userDelete(id)
+		let data = await empsDelete(id)
 		message.success("删除成功")
 		getList()
 		console.log("userDelete", data)
