@@ -15,7 +15,7 @@ export default function index() {
 	const [currentId, setCurrentId] = useState(0)
 	const [searchParams, setSearchParams] = useState<ISearchRecordParams>({})
 
-	const [data, setData] = useState<User.ResUserListItem[]>([])
+	const [data, setData] = useState<any[]>([])
 
 	const columns: ColumnsType<User.ResUserListItem> = [
 		{

@@ -1,6 +1,5 @@
 import { Login, UploadState } from "../interface"
 import http, { baseUrl } from "../index"
-import { uploadApi } from '@/http/modules/upload';
 
 /**
  * @name 上传

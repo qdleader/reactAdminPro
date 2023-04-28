@@ -16,11 +16,11 @@ export const empsEdit = (params: User.ReqUserAdd) => {
   // return http.post<Login.ResLogin>(`https://admin-api-cy1w.onrender.com/api/user/login`, params, { headers: { showLoading: true } })
 }
 export const empsList = (params: User.ReqUserList) => {
-  return http.get<User.ResUserList>(`${baseUrl}/emps`, params, { headers: { showLoading: true } })
+  return http.get<any>(`${baseUrl}/emps`, params, { headers: { showLoading: true } })
   // return http.post<Login.ResLogin>(`https://admin-api-cy1w.onrender.com/api/user/login`, params, { headers: { showLoading: true } })
 }
 export const empsInfo = (id: number) => {
-  return http.get<User.ResUserList>(`${baseUrl}/emps/${id}`, {}, { headers: { showLoading: true } })
+  return http.get<any>(`${baseUrl}/emps/${id}`, {}, { headers: { showLoading: true } })
   // return http.post<Login.ResLogin>(`https://admin-api-cy1w.onrender.com/api/user/login`, params, { headers: { showLoading: true } })
 }
 export const empsDelete = (id: number) => {

@@ -47,6 +47,9 @@ export namespace User {
 	}
 	export interface ResUserList {
 		data: ResUserListItem[]
+		rows: ResUserListItem[]
+		total: number
+		page: number
 	}
 }
 

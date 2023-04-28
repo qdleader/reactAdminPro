@@ -35,7 +35,7 @@ const addUser = (props: CollectionCreateFormProps) => {
 	const { open, currentId, onCreate, onEdit, onCancel } = props
 
 	const [loading, setLoading] = useState(false)
-	const [imageUrl, setImageUrl] = useState<string>()
+	const [imageUrl, setImageUrl] = useState<any>()
 
 	const [form] = Form.useForm()
 

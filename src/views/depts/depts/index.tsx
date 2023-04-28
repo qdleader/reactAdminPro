@@ -15,10 +15,10 @@ export default function index() {
 	const [open, setOpen] = useState(false)
 	const [currentId, setCurrentId] = useState(0)
 	const [total, setTotal] = useState(0)
-	const [name, setName] = useState("")
+	const [name, setName] = useState<any>("")
 	const [searchParams, setSearchParams] = useState<ISearchRecordParams>({})
 
-	const [data, setData] = useState<User.ResUserListItem[]>([])
+	const [data, setData] = useState<any[]>([])
 
 	const columns: ColumnsType<User.ResUserListItem> = [
 		{

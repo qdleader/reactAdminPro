@@ -1,10 +1,9 @@
-import { Layout } from "antd";
-import AvatarIcon from "./components/AvatarIcon";
-import CollapseIcon from "./components/CollapseIcon";
-import "./index.less";
+import { Layout } from "antd"
+import CollapseIcon from "./components/CollapseIcon"
+import "./index.less"
 
 const LayoutHeader = () => {
-	const { Header } = Layout;
+	const { Header } = Layout
 
 	return (
 		<Header>
@@ -19,10 +18,10 @@ const LayoutHeader = () => {
 				<Theme /> */}
 				{/* <Fullscreen /> */}
 				{/* <span className="username">Alpha</span> */}
-				<AvatarIcon />
+				{/* <AvatarIcon /> */}
 			</div>
 		</Header>
-	);
-};
+	)
+}
 
-export default LayoutHeader;
+export default LayoutHeader
