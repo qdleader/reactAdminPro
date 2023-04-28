@@ -17,6 +17,9 @@ export default function index() {
 	const [currentId, setCurrentId] = useState(0)
 	const [searchParams, setSearchParams] = useState<ISearchRecordParams>({})
 
+	const [total, setTotal] = useState(0)
+	const [name, setName] = useState("")
+
 	const [data, setData] = useState<User.ResUserListItem[]>([])
 
 	const columns: ColumnsType<User.ResUserListItem> = [
@@ -114,6 +117,7 @@ export default function index() {
 		})
 		console.log("emps-list", data)
 		setData(data?.data?.rows)
+		setTotal(data?.data?.total)
 	}
 	const lineEdit = async (id: number) => {
 		console.log(id)
@@ -133,6 +137,9 @@ export default function index() {
 	}
 	const handleSearch = async (searchRecordParams: ISearchRecordParams, pageNo: number) => {
 		setSearchParams(searchRecordParams)
+	}
+	const handleChangePage = (page: number, size: number) => {
+		setSearchParams({ ...searchParams, page, pageSize: size })
 	}
 	useEffect(() => {
 		getList()
@@ -162,7 +169,11 @@ export default function index() {
 					setOpen(false)
 				}}
 			/>
-			<Table columns={columns} dataSource={data} />
+			<Table
+				columns={columns}
+				pagination={{ total: total, pageSize: 10, onChange: handleChangePage, showSizeChanger: false }}
+				dataSource={data}
+			/>
 		</div>
 	)
 }
