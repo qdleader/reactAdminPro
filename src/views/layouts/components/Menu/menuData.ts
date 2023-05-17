@@ -54,6 +54,22 @@ const MenuData = [
 			},
 		]
 	},
+	{
+		icon: "ContainerOutlined",
+		title: "权限管理",
+		path: "/permissions",
+		isShowMenu: true,
+		close: true,
+		children: [
+			{
+				icon: "CustomerServiceOutlined",
+				path: "/permissions/roles",
+				title: "角色管理",
+				close: true,
+				isShowMenu: true
+			}
+		]
+	},
 ];
 
 export default MenuData;
