@@ -10,7 +10,7 @@ import { message } from "antd"
 import SearchForm from "./components/searchForm"
 import { ISearchRecordParams } from "./interface"
 import styles from "./index.module.scss"
-import { rolesAdd } from "@/http/modules/roles"
+import { rolesAdd, rolesList } from "@/http/modules/roles"
 
 export default function index() {
 	const [open, setOpen] = useState(false)
@@ -77,7 +77,7 @@ export default function index() {
 		console.log("编辑返回内容", data)
 	}
 	const getList = async () => {
-		let data = await deptsList(searchParams)
+		let data = await rolesList(searchParams)
 		console.log("data", data)
 		data?.data?.rows?.map((item: any) => {
 			item.key = item.id
@@ -126,7 +126,7 @@ export default function index() {
 					setCurrentId(0)
 				}}
 			>
-				添加部门
+				添加角色
 			</Button>
 			<AddRole
 				open={open}

@@ -59,7 +59,9 @@ export namespace Role {
 	export interface ReqRoleAdd {
 		name: string
 	}
-	export interface ReqUserList {
+	export interface ReqRoleList {
+		page: number
+		pageSize: number
 		name?: string
 	}
 	export interface ResUserAdd {

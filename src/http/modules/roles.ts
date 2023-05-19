@@ -12,8 +12,8 @@ export const rolesAdd = (params: Role.ReqRoleAdd) => {
 export const deptsEdit = (params: User.ReqUserAdd) => {
   return http.put<User.ResUserAdd>(`${baseUrl}/roles`, params, { headers: { showLoading: true } })
 }
-export const deptsList = (params: User.ReqUserList) => {
-  return http.get<any>(`${baseUrl}/depts`, params, { headers: { showLoading: true } })
+export const rolesList = (params: Role.ReqRoleList) => {
+  return http.get<any>(`${baseUrl}/roles`, params, { headers: { showLoading: true } })
 }
 export const deptsInfo = (id: number) => {
   return http.get<any>(`${baseUrl}/depts/${id}`, {}, { headers: { showLoading: true } })
