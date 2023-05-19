@@ -17,7 +17,10 @@ export default function index() {
 	const [currentId, setCurrentId] = useState(0)
 	const [total, setTotal] = useState(0)
 	const [name, setName] = useState<any>("")
-	const [searchParams, setSearchParams] = useState<ISearchRecordParams>({})
+	const [searchParams, setSearchParams] = useState<ISearchRecordParams>({
+		page: 1,
+		pageSize: 10,
+	})
 
 	const [data, setData] = useState<any[]>([])
 
@@ -26,7 +29,7 @@ export default function index() {
 			title: "姓名",
 			dataIndex: "name",
 			key: "name",
-			width: 100,
+			width: 150,
 			render: (text) => <>{text}</>,
 		},
 		{
