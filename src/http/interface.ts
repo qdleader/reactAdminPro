@@ -54,3 +54,30 @@ export namespace User {
 }
 
 
+
+export namespace Role {
+	export interface ReqRoleAdd {
+		name: string
+	}
+	export interface ReqUserList {
+		name?: string
+	}
+	export interface ResUserAdd {
+		data: string
+	}
+	export interface ResUserListItem {
+		key?: string;
+		id: number;
+		createTime: string;
+		address: number;
+		description: string;
+		hobby: string;
+	}
+	export interface ResUserList {
+		data: ResUserListItem[]
+		rows: ResUserListItem[]
+		total: number
+		page: number
+	}
+}
+

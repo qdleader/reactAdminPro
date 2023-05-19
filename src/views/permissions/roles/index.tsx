@@ -4,12 +4,13 @@ import { Button } from "antd"
 import { useState, useEffect } from "react"
 import { Space, Table, Tag } from "antd"
 import type { ColumnsType } from "antd/es/table"
-import AddUser from "./components/addUser"
+import AddRole from "./components/addRole"
 import { User } from "@/http/interface"
 import { message } from "antd"
 import SearchForm from "./components/searchForm"
 import { ISearchRecordParams } from "./interface"
 import styles from "./index.module.scss"
+import { rolesAdd } from "@/http/modules/roles"
 
 export default function index() {
 	const [open, setOpen] = useState(false)
@@ -62,7 +63,7 @@ export default function index() {
 	const onCreate = async (values: any) => {
 		console.log("Received values of form: ", values)
 
-		let data = await deptsAdd(values)
+		let data = await rolesAdd(values)
 		message.success("添加成功")
 		setOpen(false)
 		getList()
@@ -127,7 +128,7 @@ export default function index() {
 			>
 				添加部门
 			</Button>
-			<AddUser
+			<AddRole
 				open={open}
 				onCreate={onCreate}
 				onEdit={onEdit}
