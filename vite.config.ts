@@ -16,11 +16,11 @@ export default defineConfig({
 			// 	changeOrigin: true,
 			// 	rewrite: (path) => path.replace(/^\/api/, ""),
 			// },
-			"/api": {
-				target: "http://39.105.192.202:5627",
-				changeOrigin: true,
-				rewrite: (path) => path.replace(/^\/api/, ""),
-			},
+			// "/api": {
+			// 	target: "http://121.36.47.43:5627",
+			// 	changeOrigin: true,
+			// 	rewrite: (path) => path.replace(/^\/api/, ""),
+			// },
 		},
 	},
 })
