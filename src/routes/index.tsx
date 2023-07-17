@@ -4,6 +4,7 @@ import Register from "../views/register"
 import Index from "@/views/index/index"
 import Depts from "@/views/depts/depts"
 import Emps from "@/views/depts/emps"
+import Weather from "@/views/life/weather"
 import Upload from "@/views/upload/index"
 import LayoutIndex from "@/views/layouts/index"
 
@@ -29,6 +30,7 @@ export interface RouteObject {
 // * 导入所有router
 // const metaRouters = import.meta.globEager("./modules/*.tsx");
 // const metaRouters = import.meta.glob("./modules/*.tsx")
+import { weatherApi } from "../http/modules/weather"
 
 // // * 处理路由
 // export const routerArray: RouteObject[] = []
@@ -117,6 +119,23 @@ export const rootRouter: RouteObject[] = [
 					requiresAuth: true,
 					title: "权限管理1",
 					key: "/permissions/roles",
+				},
+			},
+		],
+	},
+	{
+		element: <LayoutIndex />,
+		meta: {
+			title: "生活助手",
+		},
+		children: [
+			{
+				path: "/life/weather",
+				element: <Weather />,
+				meta: {
+					requiresAuth: true,
+					title: "天气预报",
+					key: "/life/weather",
 				},
 			},
 		],

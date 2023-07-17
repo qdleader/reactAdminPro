@@ -70,6 +70,22 @@ const MenuData = [
 			}
 		]
 	},
+	{
+		icon: "ContainerOutlined",
+		title: "生活助手",
+		path: "/life",
+		isShowMenu: true,
+		close: true,
+		children: [
+			{
+				icon: "CustomerServiceOutlined",
+				path: "/life/weather",
+				title: "天气预报",
+				close: true,
+				isShowMenu: true
+			}
+		]
+	},
 ];
 
 export default MenuData;
