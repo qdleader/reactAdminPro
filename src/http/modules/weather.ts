@@ -23,7 +23,7 @@ export const registerApi = (params: Login.ReqLoginForm) => {
 }
 
 export const weatherApi = () => {
-	return http.get<Login.ResLogin>(`/myweather/v3/weather/weatherInfo?extensions=all&city=110105&key=e6f2b10a83287c163dd26fd868c23b9d`)
+	return http.get<any>(`/myweather/v3/weather/weatherInfo?extensions=all&city=110105&key=e6f2b10a83287c163dd26fd868c23b9d`)
 }
 
 

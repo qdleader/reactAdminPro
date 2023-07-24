@@ -10,7 +10,7 @@ export interface ISearchRecordParams {
 
 
 
-export const weatherData = {
+export const weatherData: any = {
   "阴": "http://api.map.baidu.com/images/weather/day/yin.png",
   "多云转阴": "http://api.map.baidu.com/images/weather/day/yin.png",
   "晴转多云": "http://api.map.baidu.com/images/weather/day/yin.png",

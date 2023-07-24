@@ -1,28 +1,27 @@
-import { Button, Form, Input, Select } from "antd";
-import { ISearchRecordParams } from "../interface";
-const { Item } = Form;
-
+import { Button, Form, Input, Select } from "antd"
+import { ISearchRecordParams } from "../interface"
+const { Item } = Form
 
 export interface SearchFormProps {
-	searchData: (searchParams: ISearchRecordParams, pageNo: number) => void;
+	searchData: (searchParams: ISearchRecordParams, pageNo: number) => void
 }
 const SearchForm = (props: SearchFormProps) => {
-	const { searchData } = props;
-	const [form] = Form.useForm();
+	const { searchData } = props
+	const [form] = Form.useForm()
 
 	const handleSearch = (values: any) => {
-		console.log("表单信息---->", values);
-		const { name, status } = values;
-		const searchParams: ISearchRecordParams = {
+		console.log("表单信息---->", values)
+		const { name, status } = values
+		const searchParams: any = {
 			name,
-		};
-		searchData(searchParams, 1);
-	};
+		}
+		searchData(searchParams, 1)
+	}
 
 	const handleReset = () => {
-		form.resetFields();
-		handleSearch(form.getFieldsValue());
-	};
+		form.resetFields()
+		handleSearch(form.getFieldsValue())
+	}
 
 	return (
 		<div className="record-search-form-wrap">
@@ -40,7 +39,7 @@ const SearchForm = (props: SearchFormProps) => {
 				</Item>
 			</Form>
 		</div>
-	);
-};
+	)
+}
 
-export default SearchForm;
+export default SearchForm

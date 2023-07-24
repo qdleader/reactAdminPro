@@ -131,6 +131,7 @@ export const rootRouter: RouteObject[] = [
 		children: [
 			{
 				path: "/life/weather",
+				// element: <Emps />,
 				element: <Weather />,
 				meta: {
 					requiresAuth: true,

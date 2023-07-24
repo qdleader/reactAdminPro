@@ -8,18 +8,19 @@ import AddUser from "./components/addUser"
 import { User } from "@/http/interface"
 import { message } from "antd"
 import SearchForm from "./components/searchForm"
-import { ISearchRecordParams } from "./interface"
+import { ISearchRecordParams, weatherData } from "./interface"
 import styles from "./index.module.scss"
 import { weatherApi } from "@/http/modules/weather"
 
-export default function index() {
+export default function Weather() {
 	const [open, setOpen] = useState(false)
 	const [currentId, setCurrentId] = useState(0)
 	const [total, setTotal] = useState(0)
 	const [name, setName] = useState<any>("")
 	const [searchParams, setSearchParams] = useState<ISearchRecordParams>({})
+	const [data, setData] = useState<any>({})
 
-	const [data, setData] = useState<any[]>([])
+	const [dataWeather, setDataWeather] = useState<any[]>([])
 
 	const columns: ColumnsType<User.ResUserListItem> = [
 		{
@@ -110,8 +111,10 @@ export default function index() {
 	}
 
 	const getWeather = async () => {
-		let res = await weatherApi()
+		let res: any = await weatherApi()
+		setDataWeather(res?.forecasts[0].casts)
 		console.log(111, res)
+		console.log(222, res?.forecasts[0].casts)
 	}
 	useEffect(() => {
 		getWeather()
@@ -119,61 +122,24 @@ export default function index() {
 	}, [searchParams])
 
 	return (
-		<div>
-			<div className={styles.searchBox}>
-				<SearchForm searchData={handleSearch} />
-			</div>
+		<div className={styles.weatherBox}>
+			{dataWeather.map(
+				(item, index) => (
+					<div key={index} className={styles.weatherBoxItem}>
+						<img src={weatherData[item.dayweather]}></img>
+						<div>天气: {item.dayweather}</div>
+						<div>
+							日期：{item.date} 星期{item.week}
+						</div>
+						<div>
+							温度：{item.nighttemp} - {item.daytemp}
+						</div>
+					</div>
+				)
 
-			<img
-				src="http://api.map.baidu.com/images/weather/day/yin.png"
-				alt=""
-				v-if="item.type == '阴' || item.type == '多云转阴' || item.type == '晴转多云'"
-			/>
-			<img src="http://api.map.baidu.com/images/weather/day/leizhenyu.png" alt="" v-if="item.type == '雷阵雨'" />
-			<img
-				src="http://api.map.baidu.com/images/weather/day/xiaoyu.png"
-				alt=""
-				v-if="item.type == '小雨' || item.type == '小雨转阴' || item.type == '阴转小雨'"
-			/>
-			<img src="http://api.map.baidu.com/images/weather/day/zhongyu.png" alt="" v-if="item.type == '中雨'" />
-			<img src="http://api.map.baidu.com/images/weather/day/dayu.png" alt="" v-if="item.type == '大雨'" />
-			<img src="http://api.map.baidu.com/images/weather/day/zhenyu.png" alt="" v-if="item.type == '阵雨'" />
-			<img src="http://api.map.baidu.com/images/weather/day/baoyu.png" alt="" v-if="item.type == '暴雨'" />
-			<img src="http://api.map.baidu.com/images/weather/day/baoxue.png" alt="" v-if="item.type == '暴雪'" />
-			<img src="http://api.map.baidu.com/images/weather/day/xiaoxue.png" alt="" v-if="item.type == '小雪'" />
-			<img src="http://api.map.baidu.com/images/weather/day/zhongxue.png" alt="" v-if="item.type == '中雪'" />
-			<img src="http://api.map.baidu.com/images/weather/day/daxue.png" alt="" v-if="item.type == '大雪'" />
-			<img src="http://api.map.baidu.com/images/weather/day/yujiaxue.png" alt="" v-if="item.type == '雨夹雪' || item.type == '多云转雨夹雪'" />
-			<img src="http://api.map.baidu.com/images/weather/day/zhenxue.png" alt="" v-if="item.type == '阵雪'" />
-			<img src="http://api.map.baidu.com/images/weather/day/qing.png" alt="" v-if="item.type == '晴'" />
-			<img src="http://api.map.baidu.com/images/weather/day/duoyun.png" alt="" v-if="item.type == '多云'" />
-
-			<Button
-				type="primary"
-				className={styles.searchBtn}
-				onClick={() => {
-					setOpen(true)
-					setName("")
-					setCurrentId(0)
-				}}
-			>
-				添加部门
-			</Button>
-			<AddUser
-				open={open}
-				onCreate={onCreate}
-				onEdit={onEdit}
-				currentId={currentId}
-				name={name}
-				onCancel={() => {
-					setOpen(false)
-				}}
-			/>
-			<Table
-				columns={columns}
-				pagination={{ total: total, pageSize: 10, onChange: handleChangePage, showSizeChanger: false }}
-				dataSource={data}
-			/>
+				// <img src={weatherData?[item.type + ""]} alt="" />
+			)}
+			{/* <img src={weatherData} alt="" v-if="item.type == '中雨'" /> */}
 		</div>
 	)
 }
