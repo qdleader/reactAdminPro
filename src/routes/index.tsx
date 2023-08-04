@@ -5,6 +5,7 @@ import Index from "@/views/index/index"
 import Depts from "@/views/depts/depts"
 import Emps from "@/views/depts/emps"
 import Weather from "@/views/life/weather"
+import Article from "@/views/article/article"
 import Upload from "@/views/upload/index"
 import LayoutIndex from "@/views/layouts/index"
 
@@ -137,6 +138,24 @@ export const rootRouter: RouteObject[] = [
 					requiresAuth: true,
 					title: "天气预报",
 					key: "/life/weather",
+				},
+			},
+		],
+	},
+	{
+		element: <LayoutIndex />,
+		meta: {
+			title: "文章管理",
+		},
+		children: [
+			{
+				path: "/article",
+				// element: <Emps />,
+				element: <Article />,
+				meta: {
+					requiresAuth: true,
+					title: "文章管理",
+					key: "/article",
 				},
 			},
 		],

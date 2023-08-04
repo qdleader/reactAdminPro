@@ -86,6 +86,22 @@ const MenuData = [
 			}
 		]
 	},
+	{
+		icon: "ContainerOutlined",
+		title: "文章管理",
+		path: "/article",
+		isShowMenu: true,
+		close: true,
+		children: [
+			{
+				icon: "CustomerServiceOutlined",
+				path: "/article",
+				title: "文章管理",
+				close: true,
+				isShowMenu: true
+			}
+		]
+	},
 ];
 
 export default MenuData;
