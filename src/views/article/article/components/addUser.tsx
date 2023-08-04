@@ -41,12 +41,20 @@ const addUser = (props: CollectionCreateFormProps) => {
 		form.setFieldsValue({ name: name })
 	}, [name])
 	return (
-		<Modal open={open} title={currentId ? "编辑" : "添加" + "部门"} okText="确定" cancelText="取消" onCancel={onCancel} onOk={submitForm}>
+		<Modal
+			open={open}
+			width={1000}
+			title={currentId ? "编辑" : "添加" + "文章"}
+			okText="确定"
+			cancelText="取消"
+			onCancel={onCancel}
+			onOk={submitForm}
+		>
 			<Form form={form} layout="vertical" name="form_in_modal">
-				<Form.Item name="name" label="部门名称" rules={[{ required: true, message: "不能为空" }]}>
+				<Form.Item name="name" label="文章名称" rules={[{ required: true, message: "不能为空" }]}>
 					<Input />
 				</Form.Item>
-				<Form.Item name="name1" label="部门名称" rules={[{ required: true, message: "不能为空" }]}>
+				<Form.Item name="content" label="文章内容" rules={[{ required: true, message: "不能为空" }]}>
 					<MyEditor></MyEditor>
 				</Form.Item>
 			</Form>

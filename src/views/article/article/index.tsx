@@ -125,7 +125,7 @@ export default function index() {
 					setCurrentId(0)
 				}}
 			>
-				添加部门
+				添加文章
 			</Button>
 			<AddUser
 				open={open}
