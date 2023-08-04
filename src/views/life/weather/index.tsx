@@ -10,7 +10,7 @@ import { message } from "antd"
 import SearchForm from "./components/searchForm"
 import { ISearchRecordParams, weatherData } from "./interface"
 import styles from "./index.module.scss"
-import { weatherApi } from "@/http/modules/weather"
+import { weatherApi, weatherApi1 } from "@/http/modules/weather"
 
 export default function Weather() {
 	const [open, setOpen] = useState(false)
@@ -116,8 +116,15 @@ export default function Weather() {
 		console.log(111, res)
 		console.log(222, res?.forecasts[0].casts)
 	}
+	const getWeather1 = async () => {
+		let res: any = await weatherApi1()
+		setDataWeather(res?.forecasts[0].casts)
+		console.log(111, res)
+		console.log(222, res?.forecasts[0].casts)
+	}
 	useEffect(() => {
 		getWeather()
+		getWeather1()
 		getList()
 	}, [searchParams])
 
