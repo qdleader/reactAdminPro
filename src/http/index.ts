@@ -13,8 +13,8 @@ const config = {
 	// withCredentials: true,
 }
 
-export const baseUrl = 'http://121.36.47.43:5627'
-// export const baseUrl = 'http://localhost:5627'
+// export const baseUrl = 'http://121.36.47.43:5627'
+export const baseUrl = 'http://localhost:5627'
 export interface Result {
 	code: string
 	token: string

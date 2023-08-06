@@ -10,6 +10,7 @@ import { message } from "antd"
 import SearchForm from "./components/searchForm"
 import { ISearchRecordParams } from "./interface"
 import styles from "./index.module.scss"
+import { articlesAdd } from "@/http/modules/articles"
 
 export default function index() {
 	const [open, setOpen] = useState(false)
@@ -62,7 +63,7 @@ export default function index() {
 	const onCreate = async (values: any) => {
 		console.log("Received values of form: ", values)
 
-		let data = await deptsAdd(values)
+		let data = await articlesAdd(values)
 		message.success("添加成功")
 		setOpen(false)
 		getList()
