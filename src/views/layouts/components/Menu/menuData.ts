@@ -54,6 +54,54 @@ const MenuData = [
 			},
 		]
 	},
+	{
+		icon: "ContainerOutlined",
+		title: "权限管理",
+		path: "/permissions",
+		isShowMenu: true,
+		close: true,
+		children: [
+			{
+				icon: "CustomerServiceOutlined",
+				path: "/permissions/roles",
+				title: "角色管理",
+				close: true,
+				isShowMenu: true
+			}
+		]
+	},
+	{
+		icon: "ContainerOutlined",
+		title: "生活助手",
+		path: "/life",
+		isShowMenu: true,
+		close: true,
+		children: [
+			{
+				icon: "CustomerServiceOutlined",
+				path: "/life/weather",
+				title: "天气预报",
+				close: true,
+				isShowMenu: true
+			}
+		]
+	},
+	{
+		icon: "ContainerOutlined",
+		title: "文章管理",
+		path: "/article",
+		isShowMenu: true,
+		close: true,
+		children: [
+			{
+				icon: "CustomerServiceOutlined",
+				path: "/article",
+				title: "文章管理",
+				close: true,
+				isShowMenu: true
+			}
+		]
+	},
 ];
 
 export default MenuData;

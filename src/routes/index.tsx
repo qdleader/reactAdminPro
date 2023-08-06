@@ -4,8 +4,12 @@ import Register from "../views/register"
 import Index from "@/views/index/index"
 import Depts from "@/views/depts/depts"
 import Emps from "@/views/depts/emps"
+import Weather from "@/views/life/weather"
+import Article from "@/views/article/article"
 import Upload from "@/views/upload/index"
 import LayoutIndex from "@/views/layouts/index"
+
+import Roles from "@/views/permissions/roles"
 
 export interface MetaProps {
 	keepAlive?: boolean
@@ -23,6 +27,19 @@ export interface RouteObject {
 	meta?: MetaProps
 	isLink?: string
 }
+
+// * 导入所有router
+// const metaRouters = import.meta.globEager("./modules/*.tsx");
+// const metaRouters = import.meta.glob("./modules/*.tsx")
+import { weatherApi } from "../http/modules/weather"
+
+// // * 处理路由
+// export const routerArray: RouteObject[] = []
+// Object.keys(metaRouters).forEach((item) => {
+// 	Object.keys(metaRouters[item]).forEach((key: any) => {
+// 		routerArray.push(...metaRouters[item][key])
+// 	})
+// })
 
 export const rootRouter: RouteObject[] = [
 	{
@@ -86,6 +103,59 @@ export const rootRouter: RouteObject[] = [
 					requiresAuth: true,
 					title: "线索管理",
 					key: "/depts/emps",
+				},
+			},
+		],
+	},
+	{
+		element: <LayoutIndex />,
+		meta: {
+			title: "权限管理",
+		},
+		children: [
+			{
+				path: "/permissions/roles",
+				element: <Roles />,
+				meta: {
+					requiresAuth: true,
+					title: "权限管理1",
+					key: "/permissions/roles",
+				},
+			},
+		],
+	},
+	{
+		element: <LayoutIndex />,
+		meta: {
+			title: "生活助手",
+		},
+		children: [
+			{
+				path: "/life/weather",
+				// element: <Emps />,
+				element: <Weather />,
+				meta: {
+					requiresAuth: true,
+					title: "天气预报",
+					key: "/life/weather",
+				},
+			},
+		],
+	},
+	{
+		element: <LayoutIndex />,
+		meta: {
+			title: "文章管理",
+		},
+		children: [
+			{
+				path: "/article",
+				// element: <Emps />,
+				element: <Article />,
+				meta: {
+					requiresAuth: true,
+					title: "文章管理",
+					key: "/article",
 				},
 			},
 		],
