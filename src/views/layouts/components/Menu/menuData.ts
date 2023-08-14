@@ -102,6 +102,22 @@ const MenuData = [
 			}
 		]
 	},
+	{
+		icon: "ContainerOutlined",
+		title: "聊天室",
+		path: "/chatRoom",
+		isShowMenu: true,
+		close: true,
+		children: [
+			{
+				icon: "CustomerServiceOutlined",
+				path: "/chatRoom",
+				title: "聊天室",
+				close: true,
+				isShowMenu: true
+			}
+		]
+	},
 ];
 
 export default MenuData;

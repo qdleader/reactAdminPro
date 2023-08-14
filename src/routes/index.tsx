@@ -6,6 +6,7 @@ import Depts from "@/views/depts/depts"
 import Emps from "@/views/depts/emps"
 import Weather from "@/views/life/weather"
 import Article from "@/views/article/article"
+import ChatRoom from "@/views/chatRoom/chatRoom"
 import Upload from "@/views/upload/index"
 import LayoutIndex from "@/views/layouts/index"
 
@@ -156,6 +157,23 @@ export const rootRouter: RouteObject[] = [
 					requiresAuth: true,
 					title: "文章管理",
 					key: "/article",
+				},
+			},
+		],
+	},
+	{
+		element: <LayoutIndex />,
+		meta: {
+			title: "聊天室",
+		},
+		children: [
+			{
+				path: "/chatRoom",
+				element: <ChatRoom />,
+				meta: {
+					requiresAuth: true,
+					title: "聊天室",
+					key: "/chatRoom",
 				},
 			},
 		],
