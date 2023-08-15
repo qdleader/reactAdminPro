@@ -19,7 +19,7 @@ interface CollectionCreateFormProps {
 }
 
 const addUser = (props: CollectionCreateFormProps) => {
-	const { open, currentId, name, onCreate, onEdit, onCancel } = props
+	const { open, currentId, name, content, onCreate, onEdit, onCancel } = props
 	const [form] = Form.useForm()
 
 	const submitForm = () => {
@@ -39,7 +39,8 @@ const addUser = (props: CollectionCreateFormProps) => {
 	}
 
 	useEffect(() => {
-		form.setFieldsValue({ name: name })
+		console.log(name, content)
+		form.setFieldsValue({ name: name, content: content })
 	}, [name])
 	return (
 		<Modal

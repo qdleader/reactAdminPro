@@ -10,7 +10,7 @@ interface EditorProps {
 }
 
 function MyEditor(props: EditorProps) {
-	const { value = "hello", onChange } = props
+	const { value, onChange } = props
 	// editor 实例
 	const [editor, setEditor] = useState<IDomEditor | null>(null) // TS 语法
 	// const [editor, setEditor] = useState(null)                   // JS 语法
@@ -20,10 +20,11 @@ function MyEditor(props: EditorProps) {
 
 	// 模拟 ajax 请求，异步设置 html
 	useEffect(() => {
-		setTimeout(() => {
-			setHtml("<p>hello world1</p>")
-		}, 1500)
-	}, [])
+		// setTimeout(() => {
+		// 	setHtml("<p>hello world1</p>")
+		// }, 1500)
+		setHtml(value)
+	}, [value])
 
 	// 工具栏配置
 	const toolbarConfig: Partial<IToolbarConfig> = {} // TS 语法
