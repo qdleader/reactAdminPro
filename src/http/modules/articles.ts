@@ -12,11 +12,11 @@ export const articlesAdd = (params: User.ReqUserAdd) => {
 export const deptsEdit = (params: User.ReqUserAdd) => {
   return http.put<User.ResUserAdd>(`${baseUrl}/depts`, params, { headers: { showLoading: true } })
 }
-export const deptsList = (params: User.ReqUserList) => {
-  return http.get<any>(`${baseUrl}/depts`, params, { headers: { showLoading: true } })
+export const articlesList = (params: User.ReqUserList) => {
+  return http.get<any>(`${baseUrl}/articles`, params, { headers: { showLoading: true } })
 }
-export const deptsInfo = (id: number) => {
-  return http.get<any>(`${baseUrl}/depts/${id}`, {}, { headers: { showLoading: true } })
+export const articlesInfo = (id: number) => {
+  return http.get<any>(`${baseUrl}/articles/${id}`, {}, { headers: { showLoading: true } })
 }
 export const deptsDelete = (id: number) => {
   return http.delete<User.ResUserList>(`${baseUrl}/depts/${id}`, {}, { headers: { showLoading: true } })

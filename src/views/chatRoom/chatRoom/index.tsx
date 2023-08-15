@@ -14,7 +14,7 @@ const ChatRoom: React.FC = () => {
 	}
 
 	const openWebSocket = () => {
-		const prefixUrl = "ws://192.168.3.8:5627/ws/chatRoom/"
+		const prefixUrl = `ws://121.36.47.43:5627/ws/chatRoom/`
 		// 判断当前浏览器是否支持WebSocket
 		if (!("WebSocket" in window)) {
 			alert("Not support websocket")

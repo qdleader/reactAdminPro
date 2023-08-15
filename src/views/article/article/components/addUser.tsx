@@ -12,6 +12,7 @@ interface CollectionCreateFormProps {
 	open: boolean
 	currentId: number
 	name: string
+	content: string
 	onCreate: (values: Values) => void
 	onEdit: (values: Values) => void
 	onCancel: () => void

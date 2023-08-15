@@ -10,13 +10,14 @@ import { message } from "antd"
 import SearchForm from "./components/searchForm"
 import { ISearchRecordParams } from "./interface"
 import styles from "./index.module.scss"
-import { articlesAdd } from "@/http/modules/articles"
+import { articlesAdd, articlesInfo, articlesList } from "@/http/modules/articles"
 
 export default function index() {
 	const [open, setOpen] = useState(false)
 	const [currentId, setCurrentId] = useState(0)
 	const [total, setTotal] = useState(0)
-	const [name, setName] = useState<any>("")
+	const [name, setName] = useState<string>("")
+	const [content, setContent] = useState<string>("")
 	const [searchParams, setSearchParams] = useState<ISearchRecordParams>({})
 
 	const [data, setData] = useState<any[]>([])
@@ -77,7 +78,7 @@ export default function index() {
 		console.log("编辑返回内容", data)
 	}
 	const getList = async () => {
-		let data = await deptsList(searchParams)
+		let data = await articlesList(searchParams)
 		console.log("data", data)
 		data?.data?.rows?.map((item: any) => {
 			item.key = item.id
@@ -90,10 +91,9 @@ export default function index() {
 		console.log(id)
 		setCurrentId(id)
 		setOpen(true)
-		let data = await deptsInfo(id)
-		// message.success("删除成功")
-		// getList()
+		let data = await articlesInfo(id)
 		setName(data?.data?.name)
+		setContent(data?.data?.content)
 	}
 	const lineDelete = async (id: number) => {
 		console.log(id)
@@ -134,6 +134,7 @@ export default function index() {
 				onEdit={onEdit}
 				currentId={currentId}
 				name={name}
+				content={content}
 				onCancel={() => {
 					setOpen(false)
 				}}
