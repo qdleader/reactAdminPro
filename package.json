@@ -17,6 +17,9 @@
 	},
 	"devDependencies": {
 		"@types/crypto-js": "^4.1.1",
+		"d3-geo": "^3.1.0",
+		"mercator-projection": "^0.0.2",
+		"three": "^0.124.0",
 		"@types/node": "^18.11.10",
 		"@types/react": "^18.0.24",
 		"@types/react-dom": "^18.0.8",

@@ -127,7 +127,14 @@ const MenuData = [
 		children: [
 			{
 				icon: "CustomerServiceOutlined",
-				path: "/3DWords",
+				path: "/2DWords",
+				title: "2D词云",
+				close: true,
+				isShowMenu: true
+			},
+			{
+				icon: "CustomerServiceOutlined",
+				path: "/wordsThree",
 				title: "3D词云",
 				close: true,
 				isShowMenu: true

@@ -8,6 +8,7 @@ import Weather from "@/views/life/weather"
 import Article from "@/views/article/article"
 import ChatRoom from "@/views/chatRoom/chatRoom"
 import Words from "@/views/3D/words"
+import WordsThree from "@/views/3D/wordsThree"
 import Upload from "@/views/upload/index"
 import LayoutIndex from "@/views/layouts/index"
 
@@ -186,12 +187,21 @@ export const rootRouter: RouteObject[] = [
 		},
 		children: [
 			{
-				path: "/3DWords",
+				path: "/2DWords",
 				element: <Words />,
 				meta: {
 					requiresAuth: true,
+					title: "2DWords",
+					key: "/2DWords",
+				},
+			},
+			{
+				path: "/wordsThree",
+				element: <WordsThree />,
+				meta: {
+					requiresAuth: true,
 					title: "3DWords",
-					key: "/3DWords",
+					key: "/wordsThree",
 				},
 			},
 		],
