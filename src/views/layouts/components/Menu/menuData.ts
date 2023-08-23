@@ -118,6 +118,22 @@ const MenuData = [
 			}
 		]
 	},
+	{
+		icon: "ContainerOutlined",
+		title: "3D词云",
+		path: "/3DWords",
+		isShowMenu: true,
+		close: true,
+		children: [
+			{
+				icon: "CustomerServiceOutlined",
+				path: "/3DWords",
+				title: "3D词云",
+				close: true,
+				isShowMenu: true
+			}
+		]
+	}
 ];
 
 export default MenuData;

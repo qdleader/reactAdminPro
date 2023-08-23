@@ -7,6 +7,7 @@ import Emps from "@/views/depts/emps"
 import Weather from "@/views/life/weather"
 import Article from "@/views/article/article"
 import ChatRoom from "@/views/chatRoom/chatRoom"
+import Words from "@/views/3D/words"
 import Upload from "@/views/upload/index"
 import LayoutIndex from "@/views/layouts/index"
 
@@ -174,6 +175,23 @@ export const rootRouter: RouteObject[] = [
 					requiresAuth: true,
 					title: "聊天室",
 					key: "/chatRoom",
+				},
+			},
+		],
+	},
+	{
+		element: <LayoutIndex />,
+		meta: {
+			title: "3D",
+		},
+		children: [
+			{
+				path: "/3DWords",
+				element: <Words />,
+				meta: {
+					requiresAuth: true,
+					title: "3DWords",
+					key: "/3DWords",
 				},
 			},
 		],
