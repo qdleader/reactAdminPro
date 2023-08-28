@@ -10,7 +10,7 @@ import { message } from "antd"
 import SearchForm from "./components/searchForm"
 import { ISearchRecordParams, weatherData } from "./interface"
 import styles from "./index.module.scss"
-import { weatherApi, weatherApi1 } from "@/http/modules/weather"
+import { weatherApi } from "@/http/modules/weather"
 
 export default function Weather() {
 	const [open, setOpen] = useState(false)
