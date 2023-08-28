@@ -18,7 +18,7 @@ export const loginApi1 = (params: Login.ReqLoginForm) => {
 }
 // 注册
 export const registerApi = (params: Login.ReqLoginForm) => {
-	return http.post<Login.ResLogin>(`/api/user/register`, params, { headers: { showLoading: true } })
+	return http.post<Login.ResLogin>(`${baseUrl}/register`, params, { headers: { showLoading: true } })
 	// return http.post<Login.ResLogin>(`https://admin-api-cy1w.onrender.com/api/user/register`, params, { headers: { showLoading: true } })
 }
 
