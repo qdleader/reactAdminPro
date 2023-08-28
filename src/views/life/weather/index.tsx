@@ -112,15 +112,15 @@ export default function Weather() {
 
 	const getWeather = async () => {
 		let res: any = await weatherApi()
-		setDataWeather(res?.forecasts[0].casts)
+		setDataWeather(res?.data?.forecasts[0].casts)
 		console.log(111, res)
 		console.log(222, res?.forecasts[0].casts)
 	}
 	const getWeather1 = async () => {
-		let res: any = await weatherApi1()
-		setDataWeather(res?.forecasts[0].casts)
-		console.log(111, res)
-		console.log(222, res?.forecasts[0].casts)
+		// let res: any = await weatherApi1()
+		// setDataWeather(res?.forecasts[0].casts)
+		// console.log(111, res)
+		// console.log(222, res?.forecasts[0].casts)
 	}
 	useEffect(() => {
 		getWeather()

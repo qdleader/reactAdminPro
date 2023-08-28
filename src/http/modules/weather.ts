@@ -23,10 +23,8 @@ export const registerApi = (params: Login.ReqLoginForm) => {
 }
 
 export const weatherApi = () => {
-	return http.get<any>(`/myweather/v3/weather/weatherInfo?extensions=all&city=110105&key=e6f2b10a83287c163dd26fd868c23b9d`)
+	return http.get<any>(`${baseUrl}/weather`)
 }
-export const weatherApi1 = () => {
-	return http.get<any>(`https://restapi.amap.com/v3/weather/weatherInfo?extensions=all&city=110105&key=e6f2b10a83287c163dd26fd868c23b9d`)
-}
+
 
 
