@@ -1,4 +1,3 @@
-import { RouteObject } from "@/routers/interface";
 
 /**
  * @description 获取localStorage
@@ -42,21 +41,6 @@ export const localClear = () => {
 };
 
 /**
- * @description 获取浏览器默认语言
- * @return string
- */
-export const getBrowserLang = () => {
-	let browserLang = navigator.language ? navigator.language : navigator.browserLanguage;
-	let defaultBrowserLang = "";
-	if (browserLang.toLowerCase() === "cn" || browserLang.toLowerCase() === "zh" || browserLang.toLowerCase() === "zh-cn") {
-		defaultBrowserLang = "zh";
-	} else {
-		defaultBrowserLang = "en";
-	}
-	return defaultBrowserLang;
-};
-
-/**
  * @description 获取需要展开的 subMenu
  * @param {String} path 当前访问地址
  * @returns array
@@ -78,8 +62,8 @@ export const getOpenKeys = (path: string) => {
  * @param {Array} routes 路由列表
  * @returns array
  */
-export const searchRoute = (path: string, routes: RouteObject[] = []): RouteObject => {
-	let result: RouteObject = {};
+export const searchRoute = (path: string, routes: any[] = []): any => {
+	let result: any = {};
 	for (let item of routes) {
 		if (item.path === path) return item;
 		if (item.children) {
@@ -96,10 +80,10 @@ export const searchRoute = (path: string, routes: RouteObject[] = []): RouteObje
  * @param {Array} menuList 菜单列表
  * @returns array
  */
-export const getBreadcrumbList = (path: string, menuList: Menu.MenuOptions[]) => {
+export const getBreadcrumbList = (path: string, menuList: any[]) => {
 	let tempPath: any[] = [];
 	try {
-		const getNodePath = (node: Menu.MenuOptions) => {
+		const getNodePath = (node: any) => {
 			tempPath.push(node);
 			// 找到符合条件的节点，通过throw终止掉递归
 			if (node.path === path) {
@@ -129,11 +113,11 @@ export const getBreadcrumbList = (path: string, menuList: Menu.MenuOptions[]) =>
  * @param {String} menuList 当前菜单列表
  * @returns object
  */
-export const findAllBreadcrumb = (menuList: Menu.MenuOptions[]): { [key: string]: any } => {
+export const findAllBreadcrumb = (menuList: any[]): { [key: string]: any } => {
 	let handleBreadcrumbList: any = {};
-	const loop = (menuItem: Menu.MenuOptions) => {
+	const loop = (menuItem: any) => {
 		// 下面判断代码解释 *** !item?.children?.length   ==>   (item.children && item.children.length > 0)
-		if (menuItem?.children?.length) menuItem.children.forEach(item => loop(item));
+		if (menuItem?.children?.length) menuItem.children.forEach((item: any) => loop(item));
 		else handleBreadcrumbList[menuItem.path] = getBreadcrumbList(menuItem.path, menuList);
 	};
 	menuList.forEach(item => loop(item));
@@ -146,8 +130,8 @@ export const findAllBreadcrumb = (menuList: Menu.MenuOptions[]): { [key: string]
  * @param {Array} newArr 菜单的一维数组
  * @return array
  */
-export function handleRouter(routerList: Menu.MenuOptions[], newArr: string[] = []) {
-	routerList.forEach((item: Menu.MenuOptions) => {
+export function handleRouter(routerList: any[], newArr: string[] = []) {
+	routerList.forEach((item: any) => {
 		typeof item === "object" && item.path && newArr.push(item.path);
 		item.children && item.children.length && handleRouter(item.children, newArr);
 	});

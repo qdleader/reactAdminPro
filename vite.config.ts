@@ -11,10 +11,20 @@ export default defineConfig({
 	},
 	server: {
 		proxy: {
-			"/api": {
-				target: "http://localhost:3000",
+			// "/api": {
+			// 	target: "http://localhost:3000",
+			// 	changeOrigin: true,
+			// 	rewrite: (path) => path.replace(/^\/api/, ""),
+			// },
+			// "/api": {
+			// 	target: "http://121.36.47.43:5627",
+			// 	changeOrigin: true,
+			// 	rewrite: (path) => path.replace(/^\/api/, ""),
+			// },
+			"/myweather": {
+				target: "https://restapi.amap.com/",
 				changeOrigin: true,
-				rewrite: (path) => path.replace(/^\/api/, ""),
+				rewrite: (path) => path.replace(/^\/myweather/, ""),
 			},
 		},
 	},
