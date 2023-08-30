@@ -32,13 +32,18 @@ export namespace User {
 		userAvatar: string
 	}
 	export interface ReqUserList {
-		name?: string
+		name?: string;
+		page?: number;
+		pageSize?: number;
+
 	}
 	export interface ResUserAdd {
 		data: string
 	}
 	export interface ResUserListItem {
-		key?: string;
+		key?: string | number;
+		username?: string;
+		label?: string;
 		id: number;
 		createTime: string;
 		address: number;
