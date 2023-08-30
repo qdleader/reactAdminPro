@@ -1,3 +1,4 @@
+import { Button } from "antd"
 import React, { useState, useEffect, useRef } from "react"
 
 const ChatRoom: React.FC = () => {
@@ -14,7 +15,7 @@ const ChatRoom: React.FC = () => {
 	}
 
 	const openWebSocket = () => {
-		const prefixUrl = `ws://121.36.47.43:5627/ws/chatRoom/`
+		const prefixUrl = `ws://vuereact.top:5627/ws/chatRoom/`
 		// 判断当前浏览器是否支持WebSocket
 		if (!("WebSocket" in window)) {
 			alert("Not support websocket")
@@ -74,18 +75,18 @@ const ChatRoom: React.FC = () => {
 			<br />
 			用户：
 			<input type="text" id="user_name" value={userName} onChange={(e) => setUserName(e.target.value)} name="userName" />
-			<button id="btn_join" onClick={openWebSocket}>
+			<Button id="btn_join" type="primary" onClick={openWebSocket}>
 				加入聊天室
-			</button>
-			<button id="btn_exit" onClick={closeWebSocket}>
+			</Button>
+			<Button id="btn_exit" type="default" onClick={closeWebSocket}>
 				退出聊天室
-			</button>
+			</Button>
 			<br />
 			消息：
 			<input type="text" id="send_text" value={sendText} onChange={(e) => setSendText(e.target.value)} name="sendText" />
-			<button id="btn_send" onClick={() => sendMessage(sendText)}>
+			<Button id="btn_send" type="primary" onClick={() => sendMessage(sendText)}>
 				发送
-			</button>
+			</Button>
 		</div>
 	)
 }
