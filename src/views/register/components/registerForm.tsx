@@ -1,17 +1,19 @@
-import { useState } from "react";
-import { Button, Form, Input, message } from "antd";
+import { useEffect, useRef, useState } from "react";
+import { Button, Col, Form, Input, Row, message } from "antd";
 import { useNavigate } from "react-router-dom";
 import { Login } from "../../../http/interface";
-import { UserOutlined, LockOutlined, CloseCircleOutlined } from "@ant-design/icons";
-import {  registerApi } from "../../../http/modules/login";
-
+import { UserOutlined, LockOutlined, CloseCircleOutlined,MailOutlined } from "@ant-design/icons";
+import {  registerApi, registerCodeApi } from "../../../http/modules/login";
+import '../index.less'
 const RegisterForm = () => {
     const navigate = useNavigate();
     const [form] = Form.useForm();
     const [loading, setLoading] = useState<boolean>(false);
-
+    const [countdown, setCountdown] = useState(60);
+    const timerRef = useRef<NodeJS.Timeout | null>(null);
+    // let timer: number | NodeJS.Timer | null = null
     // 登录
-    const onFinish = async (loginForm: Login.ReqLoginForm) => {
+    const onFinish = async (loginForm: Login.ReqRegisterForm) => {
         try {
             setLoading(true);
             // const { data } = await loginApi(loginForm);
@@ -29,6 +31,22 @@ const RegisterForm = () => {
     const goLogin = () => {
         navigate('/login');
     }
+
+
+    const getCode = async () => {
+        const email =  form.getFieldsValue();
+       await  registerCodeApi(email)
+        timerRef.current = setInterval(() => {
+            setCountdown((prevCountdown) => prevCountdown - 1);
+           
+        }, 1000);
+    };
+    useEffect(() => {
+        if (countdown === 0) {
+            setCountdown(60);
+            clearInterval(timerRef.current as NodeJS.Timeout);
+        }
+    },[countdown])
     return (
         <Form
             form={form}
@@ -46,6 +64,26 @@ const RegisterForm = () => {
             <Form.Item name="password" rules={[{ required: true, message: "请输入密码" }]}>
                 <Input.Password autoComplete="new-password" placeholder="密码" prefix={<LockOutlined />} />
             </Form.Item>
+            <Form.Item name="email" rules={[{ required: true, message: "请输入邮箱" }]}>
+                <Input placeholder="请输入邮箱" prefix={<MailOutlined />}/>
+            </Form.Item>
+            <Form.Item name="code" rules={[{ required: true, message: "验证码" }]}>
+            <Row >
+                <Col span={"16"}
+                >
+                <Input placeholder="请输入验证码"  />
+                </Col>
+                <Col span={"4"}>
+                <Button
+                className="codeBtn"
+                    onClick={countdown === 60 ?() => getCode():undefined}
+                >
+                    {countdown === 60 ?'获取验证码':countdown}
+                </Button>
+                </Col>
+            </Row>
+            </Form.Item>
+       
             <Form.Item className="login-btn">
                 <Button
                     onClick={goLogin}

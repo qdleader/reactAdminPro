@@ -3,6 +3,15 @@ export namespace Login {
 		username: string
 		password: string
 	}
+	export interface ReqRegisterForm {
+		username: string
+		password: string
+		email: string
+		code: number
+	}
+	export interface ReqEmailForm {
+		email: string
+	}
 	export interface ResLogin {
 		access_token: string
 		token: string

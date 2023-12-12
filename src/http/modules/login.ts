@@ -17,9 +17,13 @@ export const loginApi1 = (params: Login.ReqLoginForm) => {
 	// return http.post<Login.ResLogin>(`https://admin-api-cy1w.onrender.com/api/user/login`, params, { headers: { showLoading: true } })
 }
 // 注册
-export const registerApi = (params: Login.ReqLoginForm) => {
+export const registerApi = (params: Login.ReqRegisterForm) => {
 	return http.post<Login.ResLogin>(`${baseUrl}/register`, params, { headers: { showLoading: true } })
 	// return http.post<Login.ResLogin>(`https://admin-api-cy1w.onrender.com/api/user/register`, params, { headers: { showLoading: true } })
+}
+// 注册
+export const registerCodeApi = (params: Login.ReqEmailForm) => {
+	return http.post(`${baseUrl}/register/code`, params, { headers: { showLoading: true } })
 }
 
 export const listApi = (params: Login.ReqLoginForm) => {
