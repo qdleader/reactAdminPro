@@ -1,6 +1,6 @@
 # react18 + vite + ts + router6 + redux + antd5 后台管理系统
 
-## 项目访问地址[http://vuereact.top:9002]
+## 项目访问地址[http://admin.vuereact.top]
 
 
 
