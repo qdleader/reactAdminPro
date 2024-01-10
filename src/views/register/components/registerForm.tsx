@@ -14,10 +14,14 @@ const RegisterForm = () => {
     // let timer: number | NodeJS.Timer | null = null
     // 登录
     const onFinish = async (loginForm: Login.ReqRegisterForm) => {
+        console.log(111,loginForm);
         try {
             setLoading(true);
             // const { data } = await loginApi(loginForm);
-            const { data } = await registerApi(loginForm);
+            let obj = {
+                ...loginForm
+            }
+            await registerApi({...loginForm,code:Number(loginForm.code)});
             message.success("注册成功！");
             // navigate('/home');
         } finally {
@@ -36,6 +40,7 @@ const RegisterForm = () => {
     const getCode = async () => {
         const email =  form.getFieldsValue();
        await  registerCodeApi(email)
+       message.success("验证码发送成功！");
         timerRef.current = setInterval(() => {
             setCountdown((prevCountdown) => prevCountdown - 1);
            

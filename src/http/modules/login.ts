@@ -23,7 +23,7 @@ export const registerApi = (params: Login.ReqRegisterForm) => {
 }
 // 注册
 export const registerCodeApi = (params: Login.ReqEmailForm) => {
-	return http.post(`${baseUrl}/register/code`, params, { headers: { showLoading: true } })
+	return http.post(`${baseUrl}/register/code`, params, { headers: { showLoading: true, } })
 }
 
 export const listApi = (params: Login.ReqLoginForm) => {
