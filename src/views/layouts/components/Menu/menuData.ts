@@ -83,6 +83,13 @@ const MenuData = [
 				title: "天气预报",
 				close: true,
 				isShowMenu: true
+			},
+			{
+				icon: "CustomerServiceOutlined",
+				path: "/life/music",
+				title: "随身听",
+				close: true,
+				isShowMenu: true
 			}
 		]
 	},

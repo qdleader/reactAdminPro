@@ -5,6 +5,7 @@ import Index from "@/views/index/index"
 import Depts from "@/views/depts/depts"
 import Emps from "@/views/depts/emps"
 import Weather from "@/views/life/weather"
+import Music from "@/views/life/music"
 import Article from "@/views/article/article"
 import ChatRoom from "@/views/chatRoom/chatRoom"
 import Words from "@/views/3D/words"
@@ -141,6 +142,16 @@ export const rootRouter: RouteObject[] = [
 					requiresAuth: true,
 					title: "天气预报",
 					key: "/life/weather",
+				},
+			},
+			{
+				path: "/life/music",
+				// element: <Emps />,
+				element: <Music />,
+				meta: {
+					requiresAuth: true,
+					title: "天气预报",
+					key: "/life/music",
 				},
 			},
 		],
