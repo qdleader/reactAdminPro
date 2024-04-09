@@ -7,4 +7,17 @@
 	height: 30vw;
 	margin: 0 auto;
 	display: block;
+	background: red;
+	animation: circling 20s linear infinite;
+}
+@keyframes circling {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg)
+    }
+
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
 }
