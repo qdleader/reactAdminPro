@@ -13,8 +13,9 @@ const config = {
 	// withCredentials: true,
 }
 
-export const baseUrl = 'http://vuereact.top/api'
-// export const baseUrl = 'http://127.0.0.1:5627'
+// export const baseUrl = 'http://vuereact.top/api'
+// export const baseUrl = '/api'
+export const baseUrl = 'http://127.0.0.1:5627'
 // export const baseUrl = 'http://localhost:5627'
 export interface Result {
 	code: string

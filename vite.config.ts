@@ -11,11 +11,11 @@ export default defineConfig({
 	},
 	server: {
 		proxy: {
-			// "/api": {
-			// 	target: "http://localhost:3000",
-			// 	changeOrigin: true,
-			// 	rewrite: (path) => path.replace(/^\/api/, ""),
-			// },
+			"/api": {
+				target: "http://vuereact.top/api",
+				changeOrigin: true,
+				rewrite: (path) => path.replace(/^\/api/, ""),
+			},
 			// "/api": {
 			// 	target: "http://121.36.47.43:5627",
 			// 	changeOrigin: true,

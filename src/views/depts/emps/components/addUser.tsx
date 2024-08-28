@@ -129,12 +129,20 @@ const addUser = (props: CollectionCreateFormProps) => {
 				</Form.Item>
 				<Form.Item
 					name="password"
-					label="工作"
+					label="密码"
 					className="collection-create-form_last-form-item"
 					rules={[{ required: true, message: "不能为空" }]}
 				>
 					<Input type="textarea" />
 				</Form.Item>
+				{/* <Form.Item
+					name="job"
+					label="工作"
+					className="collection-create-form_last-form-item"
+					rules={[{ required: true, message: "不能为空" }]}
+				>
+					<Input type="textarea" />
+				</Form.Item> */}
 				<Form.Item label="工作" name="job">
 					<Select>
 						<Select.Option value="1" key={1}>
@@ -149,14 +157,7 @@ const addUser = (props: CollectionCreateFormProps) => {
 					</Select>
 				</Form.Item>
 
-				<Form.Item
-					name="password"
-					label="密码"
-					className="collection-create-form_last-form-item"
-					rules={[{ required: true, message: "不能为空" }]}
-				>
-					<Input type="textarea" />
-				</Form.Item>
+			
 				<Form.Item label="性别" name="gender">
 					<Radio.Group>
 						<Radio value="1"> 男 </Radio>
