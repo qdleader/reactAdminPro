@@ -36,6 +36,7 @@ export interface RouteObject {
 // const metaRouters = import.meta.globEager("./modules/*.tsx");
 // const metaRouters = import.meta.glob("./modules/*.tsx")
 import { weatherApi } from "../http/modules/weather"
+import News from "@/views/life/news"
 
 // // * 处理路由
 // export const routerArray: RouteObject[] = []
@@ -136,7 +137,6 @@ export const rootRouter: RouteObject[] = [
 		children: [
 			{
 				path: "/life/weather",
-				// element: <Emps />,
 				element: <Weather />,
 				meta: {
 					requiresAuth: true,
@@ -145,8 +145,16 @@ export const rootRouter: RouteObject[] = [
 				},
 			},
 			{
+				path: "/life/news",
+				element: <News />,
+				meta: {
+					requiresAuth: true,
+					title: "每日新闻",
+					key: "/life/news",
+				},
+			},
+			{
 				path: "/life/music",
-				// element: <Emps />,
 				element: <Music />,
 				meta: {
 					requiresAuth: true,
@@ -164,7 +172,6 @@ export const rootRouter: RouteObject[] = [
 		children: [
 			{
 				path: "/article",
-				// element: <Emps />,
 				element: <Article />,
 				meta: {
 					requiresAuth: true,
