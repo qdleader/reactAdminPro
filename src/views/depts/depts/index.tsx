@@ -90,8 +90,6 @@ export default function index() {
 		setCurrentId(id)
 		setOpen(true)
 		let data = await deptsInfo(id)
-		// message.success("删除成功")
-		// getList()
 		setName(data?.data?.name)
 	}
 	const lineDelete = async (id: number) => {

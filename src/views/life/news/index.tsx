@@ -8,7 +8,6 @@ export default function News() {
 	const getNews = async () => {
 		let res: any = await newsApi()
 		setDataNews(res?.data?.data)
-		console.log(111, res)
 	}
 	useEffect(() => {
 		getNews()

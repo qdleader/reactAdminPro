@@ -5,6 +5,7 @@ import Index from "@/views/index/index"
 import Depts from "@/views/depts/depts"
 import Emps from "@/views/depts/emps"
 import Weather from "@/views/life/weather"
+import LongWeather from "@/views/life/longWeather"
 import Music from "@/views/life/music"
 import Article from "@/views/article/article"
 import ChatRoom from "@/views/chatRoom/chatRoom"
@@ -145,6 +146,15 @@ export const rootRouter: RouteObject[] = [
 				},
 			},
 			{
+				path: "/life/longWeather",
+				element: <LongWeather />,
+				meta: {
+					requiresAuth: true,
+					title: "24天气预报",
+					key: "/life/longWeather",
+				},
+			},
+			{
 				path: "/life/news",
 				element: <News />,
 				meta: {
@@ -158,7 +168,7 @@ export const rootRouter: RouteObject[] = [
 				element: <Music />,
 				meta: {
 					requiresAuth: true,
-					title: "天气预报",
+					title: "音乐",
 					key: "/life/music",
 				},
 			},

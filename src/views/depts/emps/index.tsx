@@ -120,13 +120,8 @@ export default function index() {
 		setTotal(data?.data?.total)
 	}
 	const lineEdit = async (id: number) => {
-		console.log(id)
 		setCurrentId(id)
 		setOpen(true)
-		// let data = await userDelete(id)
-		// message.success("删除成功")
-		// getList()
-		// console.log("lineEdit", data);
 	}
 	const lineDelete = async (id: number) => {
 		console.log(id)

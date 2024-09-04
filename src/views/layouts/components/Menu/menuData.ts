@@ -86,6 +86,13 @@ const MenuData = [
 			},
 			{
 				icon: "CustomerServiceOutlined",
+				path: "/life/longWeather",
+				title: "24天气预报",
+				close: true,
+				isShowMenu: true
+			},
+			{
+				icon: "CustomerServiceOutlined",
 				path: "/life/news",
 				title: "每日新闻",
 				close: true,

@@ -14,16 +14,17 @@ export const loginApi = (params: Login.ReqLoginForm) => {
 // }
 export const loginApi1 = (params: Login.ReqLoginForm) => {
 	return http.post<Login.ResLoginType>(`${baseUrl}/login`, params, { headers: { showLoading: true } })
-	// return http.post<Login.ResLogin>(`https://admin-api-cy1w.onrender.com/api/user/login`, params, { headers: { showLoading: true } })
 }
 // 注册
 export const registerApi = (params: Login.ReqLoginForm) => {
 	return http.post<Login.ResLogin>(`/api/user/register`, params, { headers: { showLoading: true } })
-	// return http.post<Login.ResLogin>(`https://admin-api-cy1w.onrender.com/api/user/register`, params, { headers: { showLoading: true } })
 }
 
 export const newsApi = () => {
 	return http.get<any>(`${baseUrl}/tool/news`)
+}
+export const weatherApi = () => {
+	return http.get<any>(`${baseUrl}/tool/weather`)
 }
 
 

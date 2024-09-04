@@ -11,7 +11,8 @@ const SearchForm = (props: SearchFormProps) => {
 	const [form] = Form.useForm();
 
 	const handleSearch = (values: any) => {
-		const { name } = values;
+		console.log("表单信息---->", values);
+		const { name, status } = values;
 		const searchParams: ISearchRecordParams = {
 			name,
 		};

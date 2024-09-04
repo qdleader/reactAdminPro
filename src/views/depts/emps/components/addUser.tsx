@@ -1,5 +1,5 @@
 import { Form, Input, Modal, Radio, Select, Upload, UploadProps } from "antd"
-import React, { useState } from "react"
+import { useState } from "react"
 import { message } from "antd"
 import { useEffect } from "react"
 
@@ -56,7 +56,6 @@ const addUser = (props: CollectionCreateFormProps) => {
 	}
 
 	const beforeUpload = async (file: RcFile) => {
-		// if (imgLoading) return false;
 		// 限制文件大小 10MB
 		if (file && file?.size >= 10 * 1024 * 1024) {
 			message.error("图片限制大小10MB，上传失败")
@@ -84,15 +83,11 @@ const addUser = (props: CollectionCreateFormProps) => {
 			getBase64(info.file.originFileObj as RcFile, (url) => {
 				setLoading(false)
 				setImageUrl(url)
-
-				// setImageUrl(url)
-				// form.setFieldValue("image", url)
 			})
 		}
 	}
 	const getInfo = async (currentId: number) => {
 		let data = await empsInfo(currentId)
-		console.log("datainfo", data)
 		const { name, gender, username, password, job, image, deptId, id } = data.data
 		form.setFieldsValue({
 			name: name,
@@ -135,14 +130,6 @@ const addUser = (props: CollectionCreateFormProps) => {
 				>
 					<Input type="textarea" />
 				</Form.Item>
-				{/* <Form.Item
-					name="job"
-					label="工作"
-					className="collection-create-form_last-form-item"
-					rules={[{ required: true, message: "不能为空" }]}
-				>
-					<Input type="textarea" />
-				</Form.Item> */}
 				<Form.Item label="工作" name="job">
 					<Select>
 						<Select.Option value="1" key={1}>
