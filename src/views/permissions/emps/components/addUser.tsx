@@ -31,11 +31,9 @@ const getBase64 = (img: RcFile, callback: (url: string) => void) => {
 	reader.readAsDataURL(img)
 }
 
-const addUser = (props: CollectionCreateFormProps) => {
-	const { open, currentId, onCreate, onEdit, onCancel } = props
-
-	const [loading, setLoading] = useState(false)
-	const [imageUrl, setImageUrl] = useState<any>()
+const AddUser: React.FC<CollectionCreateFormProps> = ({ open, currentId, onCreate, onEdit, onCancel }) => {
+	const [loading, setLoading] = useState(false);
+	const [imageUrl, setImageUrl] = useState<string | undefined>();
 
 	const [form] = Form.useForm()
 
@@ -69,8 +67,13 @@ const addUser = (props: CollectionCreateFormProps) => {
 			setLoading(false)
 		})
 		console.log("上传图片", data)
-		setImageUrl(data || "")
-		form.setFieldValue("image", data)
+		if (typeof data === 'string') {
+			setImageUrl(data)
+			form.setFieldValue("image", data)
+		} else {
+			setImageUrl("")
+			form.setFieldValue("image", "")
+		}
 		return false
 	}
 
@@ -180,4 +183,4 @@ const addUser = (props: CollectionCreateFormProps) => {
 	)
 }
 
-export default addUser
+export default AddUser
